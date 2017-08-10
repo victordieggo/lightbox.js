@@ -8,6 +8,8 @@
     'use strict';
 
     var btnLightbox = document.querySelectorAll('.btn-lightbox'),
+        closeBtn    = document.createElement('button'),
+        container   = document.createElement('div'),
         screenCover = document.createElement('div'),
         body        = document.body;
 
@@ -21,49 +23,34 @@
         }
     }
 
-    function closeLightbox() {
-        var lightBox = document.querySelector('.lightbox-container'),
-            closeBtn = document.querySelector('.lightbox-close');
-        if (document.querySelector('.screen-cover')) {
-            lockScreen();
-            body.removeChild(lightBox);
-            body.removeChild(closeBtn);
-        }
-    }
-
     Array.prototype.forEach.call(btnLightbox, function (element) {
-
         element.addEventListener('click', function lightBox() {
-
-            var content         = this.nextElementSibling.innerHTML,
-                closeBtn        = document.createElement('button'),
-                container       = document.createElement('div');
-
             lockScreen();
-
             closeBtn.setAttribute('class', 'lightbox-close');
             container.setAttribute('class', 'lightbox-container');
-
-            container.innerHTML = content;
+            container.innerHTML = this.nextElementSibling.innerHTML;
             body.appendChild(container);
             body.appendChild(closeBtn);
-
-            closeBtn.addEventListener('click', closeLightbox);
-            screenCover.addEventListener('click', closeLightbox);
-            container.addEventListener('click', function (event) {
-                var senderElement = event.target;
-                if (senderElement === this) {
-                    closeLightbox();
-                }
-            });
-            document.onkeydown = function (event) {
-                if (event.keyCode === 27) {
-                    closeLightbox();
-                }
-            };
-
         });
+    });
 
+    function closeLightbox() {
+        lockScreen();
+        body.removeChild(container);
+        body.removeChild(closeBtn);
+    }
+
+    document.addEventListener('click', function (event) {
+        var target = event.target;
+        if (target === container || target === closeBtn || target === screenCover) {
+            closeLightbox();
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.keyCode === 27) {
+            closeLightbox();
+        }
     });
 
 }());
