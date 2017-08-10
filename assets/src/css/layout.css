@@ -1,0 +1,43 @@
+/*
+=======================================================
+LAYOUT
+=======================================================
+1. Background Colors
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Background Colors
+-------------------------------------------------------
+*/
+
+.bg-main {
+  background-color: #0d6788;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-lightgrey,
+hr {
+  background-color: #e3e3e3;
+}
+
+.bg-grey {
+  background-color: #afafaf;
+}
+
+.bg-dark,
+.main-nav li ul {
+  background-color: #222;
+}
+
+.bg-darker {
+  background-color: #121212;
+}
+
+.bg-none {
+  background-color: transparent;
+}

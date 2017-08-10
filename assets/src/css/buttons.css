@@ -1,0 +1,105 @@
+/*
+=======================================================
+BUTTONS
+=======================================================
+1. Base Styles
+2. Sucess Buttons
+3. Info Buttons
+4. Warning Buttons
+5. Danger Buttons
+6. Outline Buttons
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Base Styles
+-------------------------------------------------------
+*/
+
+.btn {
+  background-color: #afafaf;
+  border: solid 2px #afafaf;
+  border-radius: 4px;
+  display: inline-block;
+  height: 2.7em;
+  line-height: 2.5;
+  padding: 0 1em;
+  vertical-align: middle;
+  white-space: normal;
+}
+
+/*
+-------------------------------------------------------
+2. Sucess Buttons
+-------------------------------------------------------
+*/
+
+.btn-sucess {
+  background-color: #5cb85c;
+  border-color: #5cb85c;
+}
+
+.btn-sucess:hover {
+  background-color: #449d44;
+  border-color: #449d44;
+}
+
+/*
+-------------------------------------------------------
+3. Info Buttons
+-------------------------------------------------------
+*/
+
+.btn-info {
+  background-color: #49a0d7;
+  border-color: #49a0d7;
+}
+
+.btn-info:hover {
+  background-color: #3586b9;
+  border-color: #3586b9;
+}
+
+/*
+-------------------------------------------------------
+4. Warning Buttons
+-------------------------------------------------------
+*/
+
+.btn-warning {
+  background-color: #f0ad4e;
+  border-color: #f0ad4e;
+}
+
+.btn-warning:hover {
+  background-color: #ec971f;
+  border-color: #ec971f;
+}
+
+/*
+-------------------------------------------------------
+5. Danger Buttons
+-------------------------------------------------------
+*/
+
+.btn-danger {
+  background-color: #d9534f;
+  border-color: #d9534f;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+  border-color: #c9302c;
+}
+
+/*
+-------------------------------------------------------
+6. Outline Buttons
+-------------------------------------------------------
+*/
+
+button,
+.btn-outline {
+  background-color: transparent;
+}

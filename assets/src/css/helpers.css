@@ -1,0 +1,315 @@
+/*
+=======================================================
+HELPERS
+=======================================================
+1. Floating
+2. Position
+3. Display
+4. Spacers
+5. Padding
+6. Sizing
+7. Misc
+8. Z-Index
+9. Hide/Show
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Floating
+-------------------------------------------------------
+*/
+
+.fleft {
+  float: left;
+}
+
+.fright {
+  float: right;
+}
+
+.fnone,
+.vcenter {
+  float: none;
+}
+
+.clear {
+  clear: both;
+}
+
+/*
+-------------------------------------------------------
+2. Position
+-------------------------------------------------------
+*/
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+/*
+-------------------------------------------------------
+3. Display
+-------------------------------------------------------
+*/
+
+.block {
+  display: block;
+}
+
+.inline {
+  display: inline;
+}
+
+.label,
+.vcenter,
+.inline-block {
+  display: inline-block;
+}
+
+.table {
+  display: table;
+}
+
+.table-cell {
+  display: table-cell;
+}
+
+/*
+-------------------------------------------------------
+4. Spacers
+-------------------------------------------------------
+*/
+
+.spacer-05 {margin: 0.5em 0;}
+.spacer-10 {margin: 1.0em 0;}
+.spacer-15 {margin: 1.5em 0;}
+.spacer-20 {margin: 2.0em 0;}
+.spacer-25 {margin: 2.5em 0;}
+.spacer-30 {margin: 3.0em 0;}
+
+.spacer-top-05 {margin-top: 0.5em;}
+.spacer-top-10 {margin-top: 1.0em;}
+.spacer-top-15 {margin-top: 1.5em;}
+.spacer-top-20 {margin-top: 2.0em;}
+.spacer-top-25 {margin-top: 2.5em;}
+.spacer-top-30 {margin-top: 3.0em;}
+
+.spacer-bottom-05 {margin-bottom: 0.5em;}
+.spacer-bottom-10 {margin-bottom: 1.0em;}
+.spacer-bottom-15 {margin-bottom: 1.5em;}
+.spacer-bottom-20 {margin-bottom: 2.0em;}
+.spacer-bottom-25 {margin-bottom: 2.5em;}
+.spacer-bottom-30 {margin-bottom: 3.0em;}
+
+/*
+-------------------------------------------------------
+5. Padding
+-------------------------------------------------------
+*/
+
+.pad-05 {padding: 0.5em;}
+.pad-10 {padding: 1.0em;}
+.pad-15 {padding: 1.5em;}
+.pad-20 {padding: 2.0em;}
+.pad-25 {padding: 2.5em;}
+.pad-30 {padding: 3.0em;}
+
+.pad-top-05 {padding-top: 0.5em;}
+.pad-top-10 {padding-top: 1.0em;}
+.pad-top-15 {padding-top: 1.5em;}
+.pad-top-20 {padding-top: 2.0em;}
+.pad-top-25 {padding-top: 2.5em;}
+.pad-top-30 {padding-top: 3.0em;}
+
+.pad-bottom-05 {padding-bottom: 0.5em;}
+.pad-bottom-10 {padding-bottom: 1.0em;}
+.pad-bottom-15 {padding-bottom: 1.5em;}
+.pad-bottom-20 {padding-bottom: 2.0em;}
+.pad-bottom-25 {padding-bottom: 2.5em;}
+.pad-bottom-30 {padding-bottom: 3.0em;}
+
+/*
+-------------------------------------------------------
+6. Sizing
+-------------------------------------------------------
+*/
+
+.btn,
+.auto-size,
+.auto-width {
+  width: auto;
+}
+
+.auto-size,
+.auto-height {
+  height: auto;
+}
+
+input,
+select,
+textarea,
+.full-size,
+.full-width {
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.full-size,
+.full-height {
+  top: 0;
+  bottom: 0;
+  height: 100%;
+}
+
+/*
+-------------------------------------------------------
+7. Misc
+-------------------------------------------------------
+*/
+
+img {
+  max-width: 100%;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+.label,
+.vcenter {
+  vertical-align: middle;
+}
+
+.btn,
+input,
+select,
+textarea,
+.main-nav a,
+.smooth-transition {
+  transition: all 0.3s;
+}
+
+.label {
+  padding: 0.4em 0.6em;
+  border-radius: 0.2em;
+}
+
+.screen-cover {
+  background-color: rgb(29, 29, 29);
+  background-color: rgba(29, 29, 29, 0.7);
+}
+
+/*
+-------------------------------------------------------
+8. Z-Index
+-------------------------------------------------------
+*/
+
+.z-index-1 {
+  z-index: 1;
+}
+
+.z-index-2 {
+  z-index: 2;
+}
+
+.z-index-3 {
+  z-index: 3;
+}
+
+.z-index-4 {
+  z-index: 4;
+}
+
+.z-index-5 {
+  z-index: 5;
+}
+
+.z-index-6 {
+  z-index: 6;
+}
+
+/*
+-------------------------------------------------------
+9. Hide/Show
+-------------------------------------------------------
+*/
+
+.hide,
+.show-md,
+.show-sm,
+.show-xs {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  visibility: hidden;
+}
+
+@media only screen and (max-width: 992px) {
+
+  .show-md {
+    position: static;
+    left: 0;
+    top: 0;
+    visibility: visible;
+  }
+
+  .hide-md {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    visibility: hidden;
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  .show-sm {
+    position: static;
+    left: 0;
+    top: 0;
+    visibility: visible;
+  }
+
+  .hide-sm {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    visibility: hidden;
+  }
+
+}
+
+@media only screen and (max-width: 480px) {
+
+  .show-xs {
+    position: static;
+    left: 0;
+    top: 0;
+    visibility: visible;
+  }
+
+  .hide-xs {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    visibility: hidden;
+  }
+
+}

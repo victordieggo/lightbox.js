@@ -1,0 +1,37 @@
+{
+  "name": "spaceman",
+  "version": "1.1.1",
+  "description": "Simple HTML/CSS boilerplate from outer space.",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-combine-mq": "^0.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-uglify": "^3.0.0",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-pngquant": "^5.0.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victordieggo/spaceman.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "frontend",
+    "boilerplate"
+  ],
+  "author": "Victor Diego <victordieggo@gmail.com> (http://victordiego.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victordieggo/spaceman/issues"
+  },
+  "homepage": "https://github.com/victordieggo/spaceman#readme"
+}
