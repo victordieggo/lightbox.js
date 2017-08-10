@@ -98,8 +98,15 @@ MAIN NAVIGATION
 
 .main-nav-is-active + .nav-btn {
   background-image: url('../../dist/svg/icon-close.svg');
-  position: relative;
-  z-index: 2;
+}
+
+@media only screen and (max-width: 992px) {
+
+  .main-nav-is-active + .nav-btn {
+    position: relative;
+    z-index: 2;
+  }
+
 }
 
 /*
@@ -121,7 +128,7 @@ MAIN NAVIGATION
     text-align: left;
     text-transform: uppercase;
     background-color: #1d1d1d;
-    z-index: 2;
+    z-index: 3;
   }
 
   .main-nav a {

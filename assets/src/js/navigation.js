@@ -41,9 +41,11 @@
     function resizeFallback() {
         if (nav.classList.contains('main-nav-is-active')) {
             if (window.innerWidth <= 992) {
-                page.appendChild(screenCover).classList.add('hide-overflow');
+                page.appendChild(screenCover);
+                page.classList.add('hide-overflow');
             } else {
-                page.removeChild(screenCover).classList.remove('hide-overflow');
+                page.removeChild(screenCover);
+                page.classList.remove('hide-overflow');
             }
         }
     }

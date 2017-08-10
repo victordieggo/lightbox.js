@@ -1,0 +1,36 @@
+/*
+=======================================================
+LIGHTBOX
+=======================================================
+1. Base Styles
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Base Styles
+-------------------------------------------------------
+*/
+
+.lightbox-content {
+  display: none;
+}
+
+.lightbox-container {
+  position: fixed;
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.lightbox-close {
+  padding: 0.8em;
+  position: fixed;
+  top: 2em;
+  right: 2em;
+  z-index: 999;
+  background-color: transparent;
+  background: url('../../dist/svg/icon-close.svg') no-repeat center;
+}
