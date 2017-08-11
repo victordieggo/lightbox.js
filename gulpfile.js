@@ -91,7 +91,8 @@ gulp.task('svg', function () {
 
 gulp.task('watch', function () {
     browserSync.init({
-        proxy: 'localhost/' + path.basename(__dirname)
+        proxy: 'localhost/' + path.basename(__dirname),
+        open: false,
     });
     gulp.watch(srcPath.js, ['js']);
     gulp.watch(srcPath.css, ['css']);
