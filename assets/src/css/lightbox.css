@@ -3,6 +3,7 @@
 LIGHTBOX
 =======================================================
 1. Base Styles
+2. Buttons
 =======================================================
 */
 
@@ -17,20 +18,55 @@ LIGHTBOX
 }
 
 .lightbox-container {
-  position: fixed;
-  z-index: 99;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
+  position: fixed;
+  text-align: center;
+  transform: translate(-50%,-50%);
 }
 
-.lightbox-close {
-  padding: 0.8em;
-  position: fixed;
+.gallery-wrapper {
+  text-align: left;
+  position: relative;
+  display: inline-block;
+}
+
+/*
+-------------------------------------------------------
+2. Buttons
+-------------------------------------------------------
+*/
+
+.lightbox-btn {
+  width: 3em;
+  height: 3em;
+  position: absolute;
+  border-radius: 50%;
+  background-size: 1.5em;
+  background-color: black;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.lightbox-btn-close {
   top: 2em;
   right: 2em;
-  z-index: 999;
-  background-color: transparent;
-  background: url('../../dist/svg/icon-close.svg') no-repeat center;
+  background-image: url('../../dist/svg/icon-close.svg');
+}
+
+.lightbox-btn-next,
+.lightbox-btn-prev {
+  top: calc(50% - 1.5em);
+  background-image: url('../../dist/svg/icon-arrow.svg');
+}
+
+.lightbox-btn-prev {
+  left: 1.5em;
+  transform: rotate(90deg);
+}
+
+.lightbox-btn-next {
+  right: 1.5em;
+  transform: rotate(-90deg);
 }
