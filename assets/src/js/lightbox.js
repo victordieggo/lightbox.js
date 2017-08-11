@@ -30,7 +30,7 @@
     Array.prototype.forEach.call(btnLightbox, function (element) {
         element.addEventListener('click', function lightBox() {
             lockScreen();
-            content = this.nextElementSibling.innerHTML;
+            content = document.getElementById(element.getAttribute('data-content')).innerHTML;
             closeBtn.setAttribute('class', 'lightbox-btn lightbox-btn-close');
             container.setAttribute('class', 'lightbox-container');
             if (this.classList.contains('lightbox-gallery') && btnLightbox.length > 1) {
@@ -63,7 +63,8 @@
             if (item !== null) {
                 currentItem.classList.remove('current-gallery-item');
                 item.classList.add('current-gallery-item');
-                galleryWrapper.innerHTML = btnPrev.outerHTML + item.nextElementSibling.innerHTML + btnNext.outerHTML;
+                content = document.getElementById(item.getAttribute('data-content')).innerHTML;
+                galleryWrapper.innerHTML = btnPrev.outerHTML + content + btnNext.outerHTML;
                 container.innerHTML = galleryWrapper.outerHTML;
             }
         }
@@ -95,8 +96,8 @@
     });
 
     document.addEventListener('keyup', function (event) {
-        var key = event.keyCode;
-        if (container) {
+        if (document.querySelector('.lightbox-container')) {
+            var key = event.keyCode;
             if (key === 27) {
                 closeLightbox();
             }
