@@ -83,9 +83,9 @@
             var target = event.target;
             if (target === container || target === closeBtn || target === screenCover) {
                 closeLightbox();
-            } else if (target === document.querySelector('.lightbox-btn lightbox-btn-next')) {
+            } else if (target === document.querySelector('.lightbox-btn-next')) {
                 galleryNavigation('next');
-            } else if (target === document.querySelector('.lightbox-btn lightbox-btn-prev')) {
+            } else if (target === document.querySelector('.lightbox-btn-prev')) {
                 galleryNavigation('previous');
             }
         }
