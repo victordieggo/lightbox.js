@@ -21,12 +21,13 @@ LIGHTBOX
   top: 50%;
   left: 50%;
   width: 100%;
+  padding: 2em;
   position: fixed;
   text-align: center;
   transform: translate(-50%,-50%);
 }
 
-.gallery-wrapper {
+.lightbox-item-wrapper {
   text-align: left;
   position: relative;
   display: inline-block;
@@ -39,8 +40,8 @@ LIGHTBOX
 */
 
 .lightbox-btn {
-  width: 3em;
-  height: 3em;
+  width: 2.5em;
+  height: 2.5em;
   position: absolute;
   border-radius: 50%;
   background-size: 1.5em;
@@ -50,8 +51,8 @@ LIGHTBOX
 }
 
 .lightbox-btn-close {
-  top: 2em;
-  right: 2em;
+  top: -0.8em;
+  right: -0.8em;
   background-image: url('../../dist/svg/icon-close.svg');
 }
 
