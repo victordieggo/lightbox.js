@@ -16,9 +16,7 @@ Form Elements
 
 select,
 textarea,
-input:not(.btn),
-.label-radio:before,
-.label-checkbox:before {
+input:not(.btn) {
   background-color: #fff;
   border: solid 1px #cecece;
   border-radius: 4px;
@@ -40,9 +38,7 @@ textarea {
 
 select:focus,
 textarea:focus,
-input:not(.btn):focus,
-:focus + .label-radio:before,
-:focus + .label-checkbox:before {
+input:not(.btn):focus {
   border-color: #909090;
 }
 
@@ -52,57 +48,4 @@ input:not(.btn):focus,
 
 :-ms-input-placeholder {
   color: #888;
-}
-
-/*
--------------------------------------------------------
-2. Custom Select Arrow
--------------------------------------------------------
-*/
-
-select::-ms-expand {
-  display: none;
-}
-
-select {
-  background: url('../../dist/svg/icon-arrow-alt.svg') no-repeat;
-  background-position: right 0.5em center;
-  background-size: 1em;
-  padding-right: 2em;
-}
-
-/*
--------------------------------------------------------
-3. Custom Checkbox/Radio
--------------------------------------------------------
-*/
-
-input[type=radio],
-input[type=checkbox] {
-  height: 0;
-  width: 0;
-  border: 0;
-  padding: 0;
-  opacity: 0;
-}
-
-.label-radio:before,
-.label-checkbox:before {
-  content: '';
-  margin-right: 0.5em;
-  padding: 0.65em;
-}
-
-.label-radio:before {
-  border-radius: 50%;
-}
-
-:checked + .label-checkbox:before {
-  background: url('../../dist/svg/icon-check.svg') no-repeat center;
-  background-size: 70%;
-}
-
-:checked + .label-radio:before {
-  background: url('../../dist/svg/icon-circle.svg') no-repeat top;
-  background-size: 34% 100%;
 }

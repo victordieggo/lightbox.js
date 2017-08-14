@@ -3,137 +3,86 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Spaceman</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <title>Lightbox</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
   <link rel="stylesheet" href="assets/dist/css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="bg-darker text-white">
+  <header>
     <div class="wrapper">
       <div class="row">
         <div class="col-6 col-vcenter">
-          <h1 class="title-3 text-uppercase">Spaceman</h1>
-        </div>
-        <div class="main-nav-wrapper col-6 col-vcenter">
-
-          <!-- NAVIGATION -->
-          <nav class="main-nav smooth-transition">
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li class="menu-item-has-children">
-                <a href="#">About</a>
-                <ul>
-                  <li class="menu-item-has-children">
-                    <a href="#">Lorem Ipsum</a>
-                    <ul>
-                      <li><a href="#">Dolor Sit Amet</a></li>
-                      <li><a href="#">Lorem Ipsum</a></li>
-                    </ul>
-                  </li>
-                  <li class="menu-item-has-children">
-                    <a href="#">Dolor Sit Amet</a>
-                    <ul>
-                      <li><a href="#">Lorem Ipsum</a></li>
-                      <li><a href="#">Dolor Sit</a></li>
-                      <li> <a href="#">In Faucibus</a></li>
-                      <li><a href="#">Velit Semper</a></li>
-                    </ul>
-                  </li>
-                </ul>
-              </li>
-              <li><a href="#">Services</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </nav>
-          <!-- /NAVIGATION -->
-
-          <button class="nav-btn vcenter show-md"></button>
-
+          <h1 class="text-uppercase">Lightbox.js</h1>
+          <small>v. 0.0.1</small>
         </div>
       </div>
     </div>
   </header>
-  <!-- /HEADER -->
 
-  <!-- MAIN CONTENT -->
   <main>
-    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-    <section>
-      <div class="wrapper">
-        <div class="row">
-          <div class="col-4 md-12">
-            <a class="btn btn-sucess btn-lightbox lightbox-gallery text-white item-1">Send a Message</a>
-            <div class="lightbox-content">
-              <div class="wrapper bg-main text-white">
-                <div class="row">
-                  <div class="col-6">
-                    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-                  </div>
-                  <div class="col-6">
-                    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-                  </div>
-                </div>
-              </div>
+    <section class="wrapper">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="title-3 text-uppercase">Image Gallery</h2>
+        </div>
+        <div class="col-2 sm-3">
+          <a class="lightbox lightbox-gallery" data-content="lb-content-1" href="#">
+            <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          </a>
+          <span id="lb-content-1" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/726x444" alt="Alt Text">
+          </span>
+        </div>
+        <div class="col-2 sm-3">
+          <a class="lightbox lightbox-gallery" data-content="lb-content-2" href="#">
+            <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          </a>
+          <span id="lb-content-2" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/444x726" alt="Alt Text">
+          </span>
+        </div>
+        <div class="col-2 sm-3">
+          <img class="lightbox lightbox-gallery" data-content="lb-content-3" src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          <span id="lb-content-3" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/500x500" alt="Alt Text">
+          </span>
+        </div>
+        <div class="col-2 sm-3">
+          <img class="lightbox lightbox-gallery" data-content="lb-content-4" src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          <span id="lb-content-4" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/1024x600" alt="Alt Text">
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrapper">
+      <div class="row">
+        <div class="col-12">
+          <h2 class="title-3 text-uppercase">Modal/Mixed Content</h2>
+        </div>
+        <div class="col-12">
+          <button class="btn lightbox" data-content="modal-1-content">Click Me</button>
+          <div id="modal-1-content" class="lightbox-content">
+            <div class="modal-content">
+              <h3 class="title-5 text-uppercase">Welcome!</h3>
+              <p>Sign in to your account.</p>
+              <input type="email" name="email" placeholder="e-mail account">
+              <input type="password" name="password" placeholder="password">
+              <input class="btn full-width" type="submit" name="submit" value="Sign In">
             </div>
           </div>
-
-          <div class="col-4 md-6 sm-12">
-            <a class="btn btn-sucess btn-lightbox lightbox-gallery text-white item-2">Send a Message</a>
-            <div class="lightbox-content">
-              <div class="wrapper bg-main text-white">
-                <div class="row">
-                  <div class="col-4">
-                    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-                  </div>
-                  <div class="col-4">
-                    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-                  </div>
-                  <div class="col-4">
-                    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="col-4 md-6 sm-12">
-            <a class="btn btn-sucess btn-lightbox lightbox-gallery text-white item-3">Send a Message</a>
-            <div class="lightbox-content">
-              <div class="wrapper bg-main text-white">
-                <div class="row">
-                  <div class="col-7">
-                    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-                  </div>
-                  <div class="col-5">
-                    <img class="block full-width" src="assets/dist/img/slide.jpg" alt="Spaceman">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
   </main>
-  <!-- /MAIN CONTENT -->
 
-  <!-- FOOTER -->
-  <footer class="bg-darker text-white">
-    <div class="wrapper">
-      <div class="row">
-        <div class="col-12 align-center">
-          <small>Spaceman - Desenvolvido por <a class="no-underline" href="http://victordiego.com/" target="_blank">V.</a></small>
-        </div>
-      </div>
-    </div>
+  <footer>
+    <small>Desenvolvido por <a class="no-underline" href="http://victordiego.com/" target="_blank">V.</a></small>
   </footer>
-  <!-- /FOOTER -->
 
   <script src="assets/dist/js/main.js"></script>
 

@@ -2,42 +2,46 @@
 =======================================================
 LAYOUT
 =======================================================
-1. Background Colors
+1. Base Styles
+2. Modal
 =======================================================
 */
 
 /*
 -------------------------------------------------------
-1. Background Colors
+1. Base Styles
 -------------------------------------------------------
 */
 
-.bg-main {
-  background-color: #0d6788;
+header,
+footer {
+  background-color: #24292e;
+  color: #fff;
 }
 
 .bg-white {
   background-color: #fff;
 }
 
-.bg-lightgrey,
-hr {
-  background-color: #e3e3e3;
+footer {
+  text-align: center;
+  padding: 2em 0;
 }
 
-.bg-grey {
-  background-color: #afafaf;
+/*
+-------------------------------------------------------
+2. Modal
+-------------------------------------------------------
+*/
+
+.modal-content {
+  margin: 0 auto;
+  padding: 1.5em;
+  border-radius: 0.5em;
+  display: inline-block;
+  background-color: #fff;
 }
 
-.bg-dark,
-.main-nav li ul {
-  background-color: #222;
-}
-
-.bg-darker {
-  background-color: #121212;
-}
-
-.bg-none {
-  background-color: transparent;
+.modal-content > *:not(:nth-child(-n+2)) {
+  margin-top: 1em;
 }
