@@ -4,6 +4,7 @@ LIGHTBOX
 =======================================================
 1. Base Styles
 2. Buttons
+3. Animations
 =======================================================
 */
 
@@ -33,6 +34,16 @@ LIGHTBOX
   display: inline-block;
 }
 
+.screen-cover {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: rgb(29, 29, 29);
+  background-color: rgba(29, 29, 29, 0.7);
+}
+
 /*
 -------------------------------------------------------
 2. Buttons
@@ -40,11 +51,10 @@ LIGHTBOX
 */
 
 .lightbox-btn {
-  width: 2.5em;
-  height: 2.5em;
+  width: 2.3em;
+  height: 2.3em;
   position: absolute;
   border-radius: 50%;
-  background-size: 1.5em;
   background-color: black;
   background-position: center;
   background-repeat: no-repeat;
@@ -53,12 +63,14 @@ LIGHTBOX
 .lightbox-btn-close {
   top: -0.8em;
   right: -0.8em;
+  background-size: 40%;
   background-image: url('../../dist/svg/icon-close.svg');
 }
 
 .lightbox-btn-next,
 .lightbox-btn-prev {
   top: calc(50% - 1.5em);
+  background-size: 60%;
   background-image: url('../../dist/svg/icon-arrow.svg');
 }
 
@@ -70,4 +82,46 @@ LIGHTBOX
 .lightbox-btn-next {
   right: 1.5em;
   transform: rotate(-90deg);
+}
+
+/*
+-------------------------------------------------------
+3. Animations
+-------------------------------------------------------
+*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes createBox {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes deleteBox {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(0);
+  }
 }
