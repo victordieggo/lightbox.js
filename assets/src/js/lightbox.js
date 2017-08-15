@@ -17,12 +17,13 @@
         body            = document.body;
 
     function lockScreen() {
-        body.classList.toggle('hide-overflow');
         if (document.querySelector('.screen-cover')) {
             body.removeChild(screenCover);
+            body.style.overflow = 'auto';
         } else {
             screenCover.setAttribute('class', 'screen-cover');
             screenCover.style.animation = 'fadeIn 0.30s';
+            body.style.overflow = 'hidden';
             body.appendChild(screenCover);
         }
     }
