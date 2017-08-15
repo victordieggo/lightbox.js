@@ -49,44 +49,10 @@ small,
   font-size: 0.8em;
 }
 
-h6,
-.title-6,
-blockquote {
-  font-size: 1.1em;
-}
-
-h5,
-.title-5,
-.btn-large,
-.text-large,
-.input-large {
-  font-size: 1.3em;
-}
-
-h4,
-.title-4 {
-  font-size: 1.6em;
-}
-
-h3,
-.title-3 {
-  font-size: 1.9em;
-}
-
-h2,
-.title-2 {
-  font-size: 2.2em;
-}
-
-h1,
-.title-1 {
-  font-size: 2.5em;
-}
-
 @media only screen and (max-width: 768px) {
 
   body {
-    font-size: 80%;
+    font-size: 90%;
   }
 
 }
@@ -101,10 +67,6 @@ body {
   color: #222;
 }
 
-.text-white {
-  color: #fff;
-}
-
 a {
   color: inherit;
 }
@@ -115,8 +77,6 @@ a {
 -------------------------------------------------------
 */
 
-article,
-blockquote,
 .text-block {
   line-height: 160%;
 }

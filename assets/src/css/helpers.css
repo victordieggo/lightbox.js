@@ -75,68 +75,6 @@ HELPERS
   display: inline-block;
 }
 
-.table {
-  display: table;
-}
-
-.table-cell {
-  display: table-cell;
-}
-
-/*
--------------------------------------------------------
-4. Spacers
--------------------------------------------------------
-*/
-
-.spacer-05 {margin: 0.5em 0;}
-.spacer-10 {margin: 1.0em 0;}
-.spacer-15 {margin: 1.5em 0;}
-.spacer-20 {margin: 2.0em 0;}
-.spacer-25 {margin: 2.5em 0;}
-.spacer-30 {margin: 3.0em 0;}
-
-.spacer-top-05 {margin-top: 0.5em;}
-.spacer-top-10 {margin-top: 1.0em;}
-.spacer-top-15 {margin-top: 1.5em;}
-.spacer-top-20 {margin-top: 2.0em;}
-.spacer-top-25 {margin-top: 2.5em;}
-.spacer-top-30 {margin-top: 3.0em;}
-
-.spacer-bottom-05 {margin-bottom: 0.5em;}
-.spacer-bottom-10 {margin-bottom: 1.0em;}
-.spacer-bottom-15 {margin-bottom: 1.5em;}
-.spacer-bottom-20 {margin-bottom: 2.0em;}
-.spacer-bottom-25 {margin-bottom: 2.5em;}
-.spacer-bottom-30 {margin-bottom: 3.0em;}
-
-/*
--------------------------------------------------------
-5. Padding
--------------------------------------------------------
-*/
-
-.pad-05 {padding: 0.5em;}
-.pad-10 {padding: 1.0em;}
-.pad-15 {padding: 1.5em;}
-.pad-20 {padding: 2.0em;}
-.pad-25 {padding: 2.5em;}
-.pad-30 {padding: 3.0em;}
-
-.pad-top-05 {padding-top: 0.5em;}
-.pad-top-10 {padding-top: 1.0em;}
-.pad-top-15 {padding-top: 1.5em;}
-.pad-top-20 {padding-top: 2.0em;}
-.pad-top-25 {padding-top: 2.5em;}
-.pad-top-30 {padding-top: 3.0em;}
-
-.pad-bottom-05 {padding-bottom: 0.5em;}
-.pad-bottom-10 {padding-bottom: 1.0em;}
-.pad-bottom-15 {padding-bottom: 1.5em;}
-.pad-bottom-20 {padding-bottom: 2.0em;}
-.pad-bottom-25 {padding-bottom: 2.5em;}
-.pad-bottom-30 {padding-bottom: 3.0em;}
-
 /*
 -------------------------------------------------------
 6. Sizing
@@ -195,11 +133,9 @@ hr {
   vertical-align: middle;
 }
 
-.btn,
 input,
 select,
 textarea,
-.main-nav a,
 .smooth-transition {
   transition: all 0.3s;
 }

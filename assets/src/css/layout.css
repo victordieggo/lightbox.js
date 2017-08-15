@@ -3,7 +3,8 @@
 LAYOUT
 =======================================================
 1. Base Styles
-2. Modal
+2. Gallery
+3. Modal
 =======================================================
 */
 
@@ -13,24 +14,66 @@ LAYOUT
 -------------------------------------------------------
 */
 
-header,
-footer {
-  background-color: #24292e;
+header {
   color: #fff;
+  padding: 2em 0;
+  position: relative;
+  background-size: cover;
+  background-image: url('../../dist/img/bg-header.png');
 }
 
-.bg-white {
-  background-color: #fff;
+header:before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  content: '';
+  position: absolute;
+  background-color: #24292e;
+  background: linear-gradient(to top, #313b51 0%, #161b24 100%);
+}
+
+header h1 {
+  font-size: 3.5em;
+  line-height: 100%;
+}
+
+header img {
+  vertical-align: top;
+  margin: 1em 0 -10em 0;
+}
+
+main {
+  margin-top: 8em;
 }
 
 footer {
-  text-align: center;
+  color: #fff;
+  font-size: 90%;
   padding: 2em 0;
+  text-align: center;
+  background-color: #313b51;
 }
 
 /*
 -------------------------------------------------------
-2. Modal
+2. Gallery
+-------------------------------------------------------
+*/
+
+.gallery-item {
+  display: inline-block;
+  width: 16.66666666666667%;
+}
+
+.gallery-item img {
+  vertical-align: middle;
+}
+
+/*
+-------------------------------------------------------
+3. Modal
 -------------------------------------------------------
 */
 
