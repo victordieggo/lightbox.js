@@ -12,83 +12,66 @@
 <body>
 
   <header>
-    <div class="wrapper">
-      <div class="row row-centered align-center">
-        <div class="col-5 md-6 sm-12">
-          <h1>Lightbox.js</h1>
-          <br/>
-          <p class="text-block">A simple and easily customizable lightbox built with pure Javascript and CSS.</p>
-          <br/>
-          <a class="btn" href="#">Download</a>
-          <a class="btn btn-outline scroll" data-speed="700" href="#get-started">Get started</a>
-        </div>
-        <div class="col-12">
-          <div class="row row-centered no-gutter">
-            <div class="col-8 sm-12">
-              <img src="assets/dist/img/screenshot.png" alt="Lightbox.js">
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="wrapper align-center">
+      <h1>Lightbox.js</h1>
+      <br/>
+      <h2 class="text-block">A simple and easily customizable lightbox.</h2>
+      <br/>
+      <a class="btn" href="#">Download</a>
+      <a class="btn btn-outline scroll" href="#get-started">Get started</a>
     </div>
   </header>
 
   <main>
 
     <section id="get-started" class="wrapper">
-      <div class="row row-centered">
-        <div class="col-7 sm-12">
-          <h2>Get Started</h2>
-          <br/>
-          <p class="text-block">Everything you'll need is located in the dist/ directory: include the javascript and css files in your HTML document:</p>
-          <br/>
-          <pre><code class="language-markup">&lt;link href="dist/lightbox.css" rel="stylesheet">
+      <h2>Get Started</h2>
+      <br/>
+      <p class="text-block">Everything you'll need is located in the dist/ directory: include the javascript and css files in your HTML document:</p>
+      <br/>
+      <pre><code class="language-markup">&lt;link href="dist/lightbox.css" rel="stylesheet">
 &lt;script src="dist/lightbox.js">&lt;/script></code></pre>
-        </div>
-      </div>
     </section>
 
     <section class="wrapper">
-      <div class="row row-centered">
-        <div class="col-7 sm-12">
-          <h2>Image Gallery</h2>
-          <br/>
-          <div class="teste">
-            <div class="gallery-item">
-              <a class="lightbox lightbox-gallery" data-content="lb-content-1" href="#">
-                <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
-              </a>
-              <span id="lb-content-1" class="lightbox-content">
-                <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+1" alt="Alt Text">
-              </span>
-            </div>
-            <div class="gallery-item">
-              <a class="lightbox lightbox-gallery" data-content="lb-content-2" href="#">
-                <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
-              </a>
-              <span id="lb-content-2" class="lightbox-content">
-                <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+2" alt="Alt Text">
-              </span>
-            </div>
-            <div class="gallery-item">
-              <a class="lightbox lightbox-gallery" data-content="lb-content-3" href="#">
-                <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
-              </a>
-              <span id="lb-content-3" class="lightbox-content">
-                <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+3" alt="Alt Text">
-              </span>
-            </div>
-            <div class="gallery-item">
-              <a class="lightbox lightbox-gallery" data-content="lb-content-4" href="#">
-                <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
-              </a>
-              <span id="lb-content-4" class="lightbox-content">
-                <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+4" alt="Alt Text">
-              </span>
-            </div>
-          </div>
-          <br/>
-          <pre><code class="language-markup">&lt;div class="gallery-item">
+      <h2>Image Gallery</h2>
+      <br/>
+      <div class="teste">
+        <div class="gallery-item">
+          <a class="lightbox lightbox-gallery" data-content="lb-content-1" href="#">
+            <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          </a>
+          <span id="lb-content-1" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+1" alt="Alt Text">
+          </span>
+        </div>
+        <div class="gallery-item">
+          <a class="lightbox lightbox-gallery" data-content="lb-content-2" href="#">
+            <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          </a>
+          <span id="lb-content-2" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+2" alt="Alt Text">
+          </span>
+        </div>
+        <div class="gallery-item">
+          <a class="lightbox lightbox-gallery" data-content="lb-content-3" href="#">
+            <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          </a>
+          <span id="lb-content-3" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+3" alt="Alt Text">
+          </span>
+        </div>
+        <div class="gallery-item">
+          <a class="lightbox lightbox-gallery" data-content="lb-content-4" href="#">
+            <img src="http://via.placeholder.com/300x300" alt="Alt Text" />
+          </a>
+          <span id="lb-content-4" class="lightbox-content">
+            <img class="fleft" src="http://via.placeholder.com/730x460?text=Image+4" alt="Alt Text">
+          </span>
+        </div>
+      </div>
+      <br/>
+      <pre><code class="language-markup">&lt;div class="gallery-item">
   &lt;a class="lightbox lightbox-gallery" data-content="lb-content-4" href="#">
     &lt;img src="http://via.placeholder.com/300x300" alt="Alt Text" />
   &lt;/a>
@@ -96,31 +79,25 @@
     &lt;img src="http://via.placeholder.com/1024x600" alt="Alt Text">
   &lt;/span>
 &lt;/div></code></pre>
-        </div>
-      </div>
     </section>
 
     <section class="wrapper">
-      <div class="row row-centered">
-        <div class="col-7 sm-12">
-          <h2>Modal/Inline Content</h2>
-          <br/>
-          <div class="">
-            <button class="btn lightbox" data-content="modal-1-content">Click Me</button>
-            <div id="modal-1-content" class="lightbox-content">
-              <div class="modal-content">
-                <h3 class="title-5 text-uppercase">Welcome!</h3>
-                <p>Sign in to your account.</p>
-                <input type="email" name="email" placeholder="e-mail account">
-                <input type="password" name="password" placeholder="password">
-                <input class="btn full-width" type="submit" name="submit" value="Sign In">
-              </div>
-            </div>
+      <h2>Modal/Inline Content</h2>
+      <br/>
+      <div class="">
+        <button class="btn lightbox" data-content="modal-1-content">Click Me</button>
+        <div id="modal-1-content" class="lightbox-content">
+          <div class="modal-content">
+            <h3 class="title-5 text-uppercase">Welcome!</h3>
+            <p>Sign in to your account.</p>
+            <input type="email" name="email" placeholder="e-mail account">
+            <input type="password" name="password" placeholder="password">
+            <input class="btn" type="submit" name="submit" value="Sign In">
           </div>
-          <br/>
-
-
-          <pre><code class="language-markup">&ltbutton class="btn lightbox" data-content="modal-1-content">
+        </div>
+      </div>
+      <br/>
+      <pre><code class="language-markup">&ltbutton class="btn lightbox" data-content="modal-1-content">
   Click Me
 &lt/button>
 &ltdiv id="modal-1-content" class="lightbox-content">
@@ -132,21 +109,12 @@
     &ltinput class="btn full-width" type="submit" name="submit" value="Sign In">
   &lt/div>
 &lt/div></code></pre>
-        </div>
-      </div>
     </section>
 
   </main>
 
   <footer class="text-block">
-    <span class="vcenter">Built with</span>
-    <svg class="vcenter" width="12" height="12" viewBox="0 0 32 32">
-      <path fill="#fff" d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594C14.659 4.736 11.764 2 8.4 2 3.763 2 0 5.764 0 10.401c0 9.433 9.516 11.906 16.001 21.232C22.131 22.365 32 19.533 32 10.401 32 5.764 28.237 2 23.6 2z"/>
-    </svg>
-    <span class="vcenter">by</span>
-    <a class="vcenter" href="http://victordiego.com/" target="_blank">Victor Diego</a>
-    <br/>
-    under the <a href="http://victordiego.mit-license.org/" target="_blank">MIT license</a>.
+    Built by <a href="http://victordiego.com/" target="_blank">V.</a> under the <a href="http://victordiego.mit-license.org/" target="_blank">MIT license</a>.
   </footer>
 
   <script src="assets/dist/js/main.js"></script>

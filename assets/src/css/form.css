@@ -16,16 +16,17 @@ Form Elements
 
 select,
 textarea,
-input:not(.btn) {
+input {
   background-color: #fff;
   border: solid 1px #cecece;
   border-radius: 4px;
   display: inline-block;
   vertical-align: middle;
+  width: 100%;
 }
 
 select,
-input:not(.btn) {
+input {
   height: 2.7em;
   padding: 0 0.6em;
 }

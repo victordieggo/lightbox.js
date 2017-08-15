@@ -42,10 +42,7 @@ textarea {
   font-size: 1em;
 }
 
-small,
-.btn-small,
-.text-small,
-.input-small {
+small {
   font-size: 0.8em;
 }
 
@@ -95,16 +92,10 @@ a {
 }
 
 a,
-.btn:hover,
-.main-nav a:hover,
-.no-underline:hover {
+.btn:hover {
   text-decoration: none;
 }
 
 a:hover {
   text-decoration: underline;
-}
-
-.text-uppercase {
-  text-transform: uppercase;
 }

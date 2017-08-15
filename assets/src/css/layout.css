@@ -14,12 +14,21 @@ LAYOUT
 -------------------------------------------------------
 */
 
+.wrapper {
+  max-width: 50em;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+main .wrapper {
+  margin: 2em auto;
+}
+
 header {
   color: #fff;
-  padding: 2em 0;
+  padding: 10em 0;
   position: relative;
-  background-size: cover;
-  background-image: url('../../dist/img/bg-header.png');
+  background: url('../../dist/img/bg-header.png') no-repeat center;
 }
 
 header:before {
@@ -35,23 +44,24 @@ header:before {
 }
 
 header h1 {
-  font-size: 3.5em;
+  font-size: 3em;
   line-height: 100%;
+}
+
+header h2 {
+  font-weight: 400;
+  font-size: 1.3em;
 }
 
 header img {
   vertical-align: top;
-  margin: 1em 0 -10em 0;
-}
-
-main {
-  margin-top: 8em;
 }
 
 footer {
   color: #fff;
   font-size: 90%;
   padding: 2em 0;
+  margin-top: 2em;
   text-align: center;
   background-color: #313b51;
 }

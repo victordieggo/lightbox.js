@@ -9,14 +9,14 @@ BUTTONS
   padding: 0 1em;
   line-height: 2.7;
   border-radius: 4px;
+  position: relative;
   white-space: normal;
   display: inline-block;
   vertical-align: middle;
-  position: relative;
   background: linear-gradient(to top, #2152b9 0%, #4d7ce0 100%);
 }
 
-.btn:before {
+.btn-outline:before {
   top: 0;
   left: 0;
   right: 0;
@@ -25,7 +25,7 @@ BUTTONS
   content: '';
   border-radius: 4px;
   position: absolute;
-  box-shadow: inset 0 0 0 2px #4d7ce0;
+  border: 2px solid #4d7ce0;
 }
 
 .btn-outline:not(:hover) {
