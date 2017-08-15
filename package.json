@@ -1,7 +1,7 @@
 {
-  "name": "spaceman",
-  "version": "1.1.1",
-  "description": "Simple HTML/CSS boilerplate from outer space.",
+  "name": "lightbox",
+  "version": "0.0.1",
+  "description": "A simple and easily customizable lightbox.",
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
@@ -20,18 +20,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/victordieggo/spaceman.git"
+    "url": "git+https://victordieggo@bitbucket.org/victordieggo/lightbox.git"
   },
   "keywords": [
-    "html",
-    "css",
-    "frontend",
-    "boilerplate"
+    "lightbox",
+    "javascript"
   ],
   "author": "Victor Diego <victordieggo@gmail.com> (http://victordiego.com/)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/victordieggo/spaceman/issues"
-  },
-  "homepage": "https://github.com/victordieggo/spaceman#readme"
+  "homepage": "https://bitbucket.org/victordieggo/lightbox#readme"
 }
