@@ -95,6 +95,11 @@ footer {
   background-color: #fff;
 }
 
-.modal-content > *:not(:nth-child(-n+2)) {
+.modal-content form,
+.modal-content input:not(:first-child) {
   margin-top: 1em;
+}
+
+.modal-content .btn {
+  width: 100%;
 }

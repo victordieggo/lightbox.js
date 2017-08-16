@@ -2,29 +2,29 @@
 <html lang="en">
 
 <head>
-  <meta https-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta charset="UTF-8"/>
   <title>Lightbox.js - A simple and easily customizable lightbox.</title>
-  <link href="httpss://fonts.googleapis.com/css?family=Open+Sans:400,600">
-  <link rel="stylesheet" href="assets/dist/css/style.css">
-  <link rel="stylesheet" href="lightbox/lightbox.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+  <link href="assets/dist/css/style.css" rel="stylesheet">
+  <link href="lightbox/lightbox.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link rel="canonical" href="" />
-  <meta name="title" content="Lightbox.js" />
-  <meta name="description" content="A simple and easily customizable lightbox." />
-  <meta name="keywords" content="lightbox, javascript, responsive" />
-  <meta name="thumbnail" content="" />
-  <meta property="og:title" content="Lightbox.js" />
-  <meta property="og:description" content="A simple and easily customizable lightbox." />
-  <meta property="og:image" content="" />
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_br" />
-  <meta property="og:site_name" content="" />
-  <meta property="og:url" content="" />
+  <link rel="canonical" href="https://victordiego.com/lightbox/">
+  <meta name="title" content="Lightbox.js">
+  <meta name="description" content="A simple and easily customizable lightbox.">
+  <meta name="keywords" content="lightbox, javascript, responsive">
+  <meta name="thumbnail" content="">
+  <meta property="og:title" content="Lightbox.js">
+  <meta property="og:description" content="A simple and easily customizable lightbox.">
+  <meta property="og:image" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_br">
+  <meta property="og:site_name" content="">
+  <meta property="og:url" content="https://victordiego.com/lightbox/">
   <meta name="twitter" content="Lightbox.js" />
-  <meta name="twitter:description" content="A simple and easily customizable lightbox." />
-  <meta name="twitter:image" content="" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@victordieggo" />
+  <meta name="twitter:description" content="A simple and easily customizable lightbox.">
+  <meta name="twitter:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@victordieggo">
 </head>
 
 <body>
@@ -47,8 +47,8 @@
       <br/>
       <p class="text-block">Everything you'll need is located under the lightbox/ directory. Include the javascript and css files in your HTML document and you're all set up:</p>
       <br/>
-      <pre><code class="language-markup">&lt;link href="dist/lightbox.min.css" rel="stylesheet">
-&lt;script src="dist/lightbox.min.js">&lt;/script></code></pre>
+      <pre><code class="language-markup">&lt;link href="lightbox/lightbox.min.css" rel="stylesheet">
+&lt;script src="lightbox/lightbox.min.js">&lt;/script></code></pre>
     </section>
 
     <section id="image-gallery" class="wrapper">
@@ -91,26 +91,28 @@
       <br/>
       <pre><code class="language-markup">&lt;div class="gallery-item">
   &lt;a class="lightbox lightbox-gallery" data-content="lb-content" href="#">
-    &lt;img src="https://via.placeholder.com/300x300" alt="Alt Text" />
+    &lt;img src="https://via.placeholder.com/300x300" alt="Thumbnail">
   &lt;/a>
   &lt;span id="lb-content" class="lightbox-content">
-    &lt;img src="https://via.placeholder.com/730x460" alt="Alt Text">
+    &lt;img src="https://via.placeholder.com/730x460" alt="Full Image">
   &lt;/span>
 &lt;/div></code></pre>
     </section>
 
-    <section id-"inline-content" class="wrapper">
+    <section id="inline-content" class="wrapper">
       <h2>Modal/Inline Content</h2>
       <br/>
-      <div class="">
+      <div>
         <button class="btn lightbox" data-content="modal-1-content">Click Me</button>
         <div id="modal-1-content" class="lightbox-content">
           <div class="modal-content">
-            <h3 class="title-5 text-uppercase">Welcome!</h3>
+            <h3>Welcome!</h3>
             <p>Sign in to your account.</p>
-            <input type="email" name="email" placeholder="e-mail account">
-            <input type="password" name="password" placeholder="password">
-            <input class="btn" type="submit" name="submit" value="Sign In">
+            <form action="/lightbox.js" method="post">
+              <input type="email" name="email" placeholder="e-mail account">
+              <input type="password" name="password" placeholder="password">
+              <input class="btn" type="submit" name="submit" value="Sign In">
+            </form>
           </div>
         </div>
       </div>
@@ -120,11 +122,13 @@
 &lt/button>
 &ltdiv id="modal-content" class="lightbox-content">
   &ltdiv class="modal-content">
-    &lth3 class="title-5 text-uppercase">Welcome!</h3>
-    &ltp>Sign in to your account.</p>
-    &ltinput type="email" name="email" placeholder="e-mail account">
-    &ltinput type="password" name="password" placeholder="password">
-    &ltinput class="btn full-width" type="submit" name="submit" value="Sign In">
+    &lth3>Welcome!&lt/h3>
+    &ltp>Sign in to your account.&lt/p>
+    &ltform>
+      &ltinput type="email" name="email" placeholder="e-mail account">
+      &ltinput type="password" name="password" placeholder="password">
+      &ltinput class="btn" type="submit" name="submit" value="Sign In">
+    &lt/form>
   &lt/div>
 &lt/div></code></pre>
     </section>
