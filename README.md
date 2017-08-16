@@ -7,8 +7,8 @@ Lightbox.js is a simple and easily customizable lightbox plugin built with javas
 Everything you'll need is located under the [`lightbox/`](lightbox/) directory. Include the javascript and css files in your HTML document and you're all set up:
 
 ```html
-<link href="lightbox.min.css" rel="stylesheet">
-<script src="lightbox.min.js"></script>
+<link href="lightbox/lightbox.min.css" rel="stylesheet">
+<script src="lightbox/lightbox.min.js"></script>
 ```
 
 ### Image Gallery ###
@@ -16,10 +16,10 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 ```html
 <div class="gallery-item">
   <a class="lightbox lightbox-gallery" data-content="lb-content" href="#">
-    <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
+    <img src="https://via.placeholder.com/300x300" alt="Thumbnail">
   </a>
   <span id="lb-content" class="lightbox-content">
-    <img src="https://via.placeholder.com/730x460" alt="Alt Text">
+    <img src="https://via.placeholder.com/730x460" alt="Full Image">
   </span>
 </div>
 ```
@@ -32,11 +32,13 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 </button>
 <div id="modal-content" class="lightbox-content">
   <div class="modal-content">
-    <h3 class="title-5 text-uppercase">Welcome!
-    <p>Sign in to your account.
-    <input type="email" name="email" placeholder="e-mail account">
-    <input type="password" name="password" placeholder="password">
-    <input class="btn full-width" type="submit" name="submit" value="Sign In">
+    <h3>Welcome!</h3>
+    <p>Sign in to your account.</p>
+    <form>
+      <input type="email" name="email" placeholder="e-mail account">
+      <input type="password" name="password" placeholder="password">
+      <input class="btn" type="submit" name="submit" value="Sign In">
+    </form>
   </div>
 </div>
 ```
