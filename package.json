@@ -1,5 +1,5 @@
 {
-  "name": "lightbox",
+  "name": "lightbox.js",
   "version": "0.0.1",
   "description": "A simple and easily customizable lightbox.",
   "main": "gulpfile.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://victordieggo@bitbucket.org/victordieggo/lightbox.git"
+    "url": "git+https://github.com/victordieggo/lightbox.js.git"
   },
   "keywords": [
     "lightbox",
@@ -28,5 +28,8 @@
   ],
   "author": "Victor Diego <victordieggo@gmail.com> (http://victordiego.com/)",
   "license": "MIT",
-  "homepage": "https://bitbucket.org/victordieggo/lightbox#readme"
+  "bugs": {
+    "url": "https://github.com/victordieggo/lightbox.js/issues"
+  },
+  "homepage": "https://github.com/victordieggo/lightbox.js#readme"
 }
