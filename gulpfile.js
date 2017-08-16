@@ -15,6 +15,11 @@ var gulp        = require('gulp'),
     mozjpeg     = require('imagemin-mozjpeg'),
     pngquant    = require('imagemin-pngquant'),
     path        = require('path'),
+    lightbox = {
+        root: 'lightbox/',
+        css:  'lightbox/lightbox.css',
+        js:   'lightbox/lightbox.js'
+    },
     basePath = {
         src:  'assets/src/',
         dist: 'assets/dist/'
@@ -46,6 +51,15 @@ gulp.task('css', function () {
         .pipe(browserSync.stream());
 });
 
+gulp.task('cssLighbox', function () {
+    gulp.src(lightbox.css)
+        .pipe(concat('lightbox.min.css'))
+        .pipe(combineMq())
+        .pipe(cssmin())
+        .pipe(gulp.dest(lightbox.root))
+        .pipe(browserSync.stream());
+});
+
 //-------------------------------------------------------------------
 // BUILD JS
 //-------------------------------------------------------------------
@@ -55,6 +69,14 @@ gulp.task('js', function () {
         .pipe(concat('main.js'))
         .pipe(uglify())
         .pipe(gulp.dest(distPath.js))
+        .pipe(browserSync.stream());
+});
+
+gulp.task('jsLighbox', function () {
+    gulp.src(lightbox.js)
+        .pipe(concat('lightbox.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(lightbox.root))
         .pipe(browserSync.stream());
 });
 
@@ -92,10 +114,12 @@ gulp.task('watch', function () {
         open: false,
     });
     gulp.watch(srcPath.js, ['js']);
+    gulp.watch(lightbox.js, ['jsLighbox']);
     gulp.watch(srcPath.css, ['css']);
+    gulp.watch(lightbox.css, ['cssLighbox']);
     gulp.watch(srcPath.img, ['img']);
     gulp.watch(srcPath.svg, ['svg']);
     gulp.watch(bsReload, browserSync.reload);
 });
 
-gulp.task('default', ['js', 'css', 'img', 'svg', 'watch']);
+gulp.task('default', ['js', 'jsLighbox', 'css', 'cssLighbox', 'img', 'svg', 'watch']);

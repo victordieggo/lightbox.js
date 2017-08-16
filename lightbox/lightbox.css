@@ -64,14 +64,14 @@ LIGHTBOX
   top: -0.8em;
   right: -0.8em;
   background-size: 40%;
-  background-image: url('../../dist/svg/icon-close.svg');
+  background-image: url('icons/icon-close.svg');
 }
 
 .lightbox-btn-next,
 .lightbox-btn-prev {
   top: calc(50% - 1.5em);
   background-size: 60%;
-  background-image: url('../../dist/svg/icon-arrow.svg');
+  background-image: url('icons/icon-arrow.svg');
 }
 
 .lightbox-btn-prev {
