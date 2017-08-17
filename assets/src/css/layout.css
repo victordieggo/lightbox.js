@@ -95,8 +95,7 @@ footer {
   background-color: #fff;
 }
 
-.modal-content form,
-.modal-content input:not(:first-child) {
+.modal-content input {
   margin-top: 1em;
 }
 
