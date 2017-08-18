@@ -19,7 +19,7 @@
     function lockScreen() {
         if (document.querySelector('.screen-cover')) {
             body.removeChild(screenCover);
-            body.style.overflow = 'auto';
+            body.removeAttribute('style');
         } else {
             screenCover.setAttribute('class', 'screen-cover');
             screenCover.style.animation = 'fadeIn 0.30s';
@@ -57,25 +57,21 @@
         });
     });
 
-    function galleryNavigation(val) {
-        lightboxWrapper.style.animation = 'none';
+    function galleryNavigation(position) {
+        lightboxWrapper.removeAttribute('style');
         var currentItem = document.querySelector('.current-lightbox-item'),
-            findItem,
+            siblingItem = {
+                next: currentItem.parentElement.nextElementSibling,
+                previous: currentItem.parentElement.previousElementSibling
+            },
             content,
             item;
-        if (val === 'next') {
-            findItem = currentItem.parentElement.nextElementSibling;
-        } else if (val === 'previous') {
-            findItem = currentItem.parentElement.previousElementSibling;
-        }
-        if (findItem !== null) {
-            item = findItem.querySelector('[data-lightbox]');
-            if (item !== null) {
-                content = document.getElementById(item.getAttribute('data-lightbox-content')).innerHTML;
-                buildLightbox(btnPrev.outerHTML + content + btnNext.outerHTML);
-                currentItem.classList.remove('current-lightbox-item');
-                item.classList.add('current-lightbox-item');
-            }
+        if (siblingItem[position] !== null) {
+            item = siblingItem[position].querySelector('[data-lightbox]');
+            content = document.getElementById(item.getAttribute('data-lightbox-content'));
+            buildLightbox(btnPrev.outerHTML + content.innerHTML + btnNext.outerHTML);
+            currentItem.classList.remove('current-lightbox-item');
+            item.classList.add('current-lightbox-item');
         }
     }
 
