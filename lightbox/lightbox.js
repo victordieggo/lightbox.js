@@ -37,7 +37,7 @@
         body.appendChild(container);
     }
 
-    Array.prototype.forEach.call(btnLightbox, function (element) {
+    [].forEach.call(btnLightbox, function (element) {
         element.addEventListener('click', function lightBox(event) {
             this.blur();
             lockScreen();
@@ -45,8 +45,8 @@
             this.classList.add('current-lightbox-item');
             lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
             var dataType = this.getAttribute('data-lightbox'),
-                dataContent = this.getAttribute('data-lightbox-content'),
-                lightboxContent = document.getElementById(dataContent).innerHTML;
+                dataContent = this.getAttribute('href'),
+                lightboxContent = document.querySelector(dataContent).innerHTML;
             if (dataType === 'gallery') {
                 container.classList.add('lightbox-gallery');
                 btnNext.setAttribute('class', 'lightbox-btn lightbox-btn-next');
@@ -68,7 +68,7 @@
             item;
         if (siblingItem[position] !== null) {
             item = siblingItem[position].querySelector('[data-lightbox]');
-            content = document.getElementById(item.getAttribute('data-lightbox-content'));
+            content = document.querySelector(item.getAttribute('href'));
             buildLightbox(btnPrev.outerHTML + content.innerHTML + btnNext.outerHTML);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
