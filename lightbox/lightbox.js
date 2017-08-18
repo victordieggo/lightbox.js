@@ -37,7 +37,7 @@
         body.appendChild(container);
     }
 
-    [].forEach.call(btnLightbox, function (element) {
+    Array.prototype.forEach.call(btnLightbox, function (element) {
         element.addEventListener('click', function lightBox(event) {
             this.blur();
             lockScreen();

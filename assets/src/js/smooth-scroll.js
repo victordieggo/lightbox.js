@@ -51,7 +51,7 @@
         var scrollToggle = document.querySelectorAll('.scroll');
 
         // For each smooth scroll link
-        [].forEach.call(scrollToggle, function (toggle) {
+        Array.prototype.forEach.call(scrollToggle, function (toggle) {
 
             // When the smooth scroll link is clicked
             toggle.addEventListener('click', function(e) {
