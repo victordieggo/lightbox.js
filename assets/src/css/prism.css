@@ -4,6 +4,13 @@
  * Loosely based on Monokai textmate theme by http://www.monokai.nl/
  * @author ocodia
  */
+.code {
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  background-color: #eee;
+  vertical-align: top;
+  padding: 0.2em 0.4em;
+  font-size: 95%;
+}
 
 code[class*="language-"],
 pre[class*="language-"] {

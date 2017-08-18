@@ -51,60 +51,22 @@
 &lt;script src="lightbox/lightbox.min.js">&lt;/script></code></pre>
     </section>
 
-    <section id="image-gallery" class="wrapper">
-      <h2>Image Gallery</h2>
+    <section id="usage" class="wrapper">
+      <h2>Usage</h2>
       <br/>
-      <div class="teste">
-        <div class="gallery-item">
-          <a href="#lb-content-1" data-lightbox="gallery">
-            <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
-          </a>
-          <span id="lb-content-1" class="lightbox-content">
-            <img class="fleft" src="https://via.placeholder.com/730x460?text=Image+1" alt="Alt Text">
-          </span>
-        </div>
-        <div class="gallery-item">
-          <a href="#lb-content-2" data-lightbox="gallery">
-            <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
-          </a>
-          <span id="lb-content-2" class="lightbox-content">
-            <img class="fleft" src="https://via.placeholder.com/730x460?text=Image+2" alt="Alt Text">
-          </span>
-        </div>
-        <div class="gallery-item">
-          <a href="#lb-content-3" data-lightbox="gallery">
-            <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
-          </a>
-          <span id="lb-content-3" class="lightbox-content">
-            <img class="fleft" src="https://via.placeholder.com/730x460?text=Image+3" alt="Alt Text">
-          </span>
-        </div>
-        <div class="gallery-item">
-          <a href="#lb-content-4" data-lightbox="gallery">
-            <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
-          </a>
-          <span id="lb-content-4" class="lightbox-content">
-            <img class="fleft" src="https://via.placeholder.com/730x460?text=Image+4" alt="Alt Text">
-          </span>
-        </div>
-      </div>
+      <p class="text-block">This lightbox was designed to be as simple as possible while supporting images, videos (youtube only, vimeo comes next) and inline content out of the box. It is triggered by adding the <span class="code">data-lightbox</span> attribute on any <span class="code">&lta></span> tag and its content is defined by the <span class="code">href</span> attribute:</p>
       <br/>
-      <pre><code class="language-markup">&lt;div class="gallery-item">
-  &lt;a href="#lb-content" data-lightbox="gallery">
-    &lt;img src="https://via.placeholder.com/300x300" alt="Thumbnail">
-  &lt;/a>
-  &lt;span id="lb-content" class="lightbox-content">
-    &lt;img src="https://via.placeholder.com/730x460" alt="Full Image">
-  &lt;/span>
-&lt;/div></code></pre>
-    </section>
-
-    <section id="inline-content" class="wrapper">
-      <h2>Modal/Inline Content</h2>
-      <br/>
-      <div>
-        <a class="btn" href="#modal-content" data-lightbox>Click Me</a>
-        <div id="modal-content" class="lightbox-content">
+      <div class="examples">
+        <a class="btn" href="#modal" data-lightbox>
+          Modal
+        </a>
+        <a class="btn" href="assets\dist\img\image-1.png" data-lightbox>
+          Image
+        </a>
+        <a class="btn" href="https://www.youtube.com/watch?v=PQVD-pMlKqA" data-lightbox>
+          Youtube
+        </a>
+        <div id="modal" class="lightbox-content">
           <div class="modal-content">
             <h3>Welcome!</h3>
             <p>Sign in to your account.</p>
@@ -117,10 +79,16 @@
         </div>
       </div>
       <br/>
-      <pre><code class="language-markup">&lta class="btn" href="#modal-content" data-lightbox>
-  Click Me
+      <pre><code class="language-markup">&lta class="btn" href="#modal" data-lightbox>
+  Modal
 &lt/a>
-&ltdiv id="modal-content" class="lightbox-content">
+&lta class="btn" href="assets\dist\img\image-1.png" data-lightbox>
+  Image
+&lt/a>
+&lta class="btn" href="https://www.youtube.com/watch?v=PQVD-pMlKqA" data-lightbox>
+  Youtube
+&lt/a>
+&ltdiv id="modal" class="lightbox-content">
   &ltdiv class="modal-content">
     &lth3>Welcome!&lt/h3>
     &ltp>Sign in to your account.&lt/p>
@@ -131,6 +99,42 @@
     &lt/form>
   &lt/div>
 &lt/div></code></pre>
+    </section>
+
+    <section id="image-gallery" class="wrapper">
+      <h2>Image Gallery</h2>
+      <br/>
+      <p class="text-block">The gallery is triggered whenever the <span class="code">data-lightbox</span> attribute is set to <span class="code">gallery</span>. If there are any previous or next items, they will be found automatically as long as their parents are siblings*. The navigation triggers on <span class="code">click</span> and  <span class="code">keyup</span> events.</p>
+      <br/>
+      <div class="image-gallery">
+        <div class="gallery-item">
+          <a href="assets\dist\img\image-1.png" data-lightbox="gallery">
+            <img src="assets\dist\img\thumbnail-gallery.png" alt="Alt Text" />
+          </a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets\dist\img\image-2.png" data-lightbox="gallery">
+            <img src="assets\dist\img\thumbnail-gallery.png" alt="Alt Text" />
+          </a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets\dist\img\image-3.png" data-lightbox="gallery">
+            <img src="assets\dist\img\thumbnail-gallery.png" alt="Alt Text" />
+          </a>
+        </div>
+        <div class="gallery-item">
+          <a href="assets\dist\img\image-4.png" data-lightbox="gallery">
+            <img src="assets\dist\img\thumbnail-gallery.png" alt="Alt Text" />
+          </a>
+        </div>
+      </div>
+      <br/>
+      <pre><code class="language-markup">&lt;div class="gallery-item">
+  &lt;a href="assets\dist\img\image-1.png" data-lightbox="gallery">
+    &lt;img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail">
+  &lt;/a>
+&lt;/div></code></pre>
+    <small>*no GoT joke was intended.</small>
     </section>
 
   </main>

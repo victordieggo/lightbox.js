@@ -37,6 +37,24 @@
         body.appendChild(container);
     }
 
+    function sortContent(href) {
+        var videoID, player, playerWrapper;
+        if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
+            return '<img src="' + href + '" alt="">';
+        }
+        if (href.indexOf('youtube') !== -1) {
+            videoID = href.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+            playerWrapper = document.createElement('div');
+            playerWrapper.setAttribute('class', 'video-container');
+            player = document.createElement('iframe');
+            player.setAttribute('src', 'https://www.youtube.com/embed/' + videoID[2] + '?autoplay=1&rel=0');
+            player.setAttribute('allowfullscreen', '');
+            playerWrapper.appendChild(player);
+            return playerWrapper.outerHTML;
+        }
+        return document.querySelector(href).innerHTML;
+    }
+
     Array.prototype.forEach.call(btnLightbox, function (element) {
         element.addEventListener('click', function lightBox(event) {
             this.blur();
@@ -45,8 +63,7 @@
             this.classList.add('current-lightbox-item');
             lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
             var dataType = this.getAttribute('data-lightbox'),
-                dataContent = this.getAttribute('href'),
-                lightboxContent = document.querySelector(dataContent).innerHTML;
+                lightboxContent = sortContent(this.getAttribute('href'));
             if (dataType === 'gallery') {
                 container.classList.add('lightbox-gallery');
                 btnNext.setAttribute('class', 'lightbox-btn lightbox-btn-next');
@@ -64,12 +81,10 @@
                 next: currentItem.parentElement.nextElementSibling,
                 previous: currentItem.parentElement.previousElementSibling
             },
-            content,
             item;
         if (siblingItem[position] !== null) {
             item = siblingItem[position].querySelector('[data-lightbox]');
-            content = document.querySelector(item.getAttribute('href'));
-            buildLightbox(btnPrev.outerHTML + content.innerHTML + btnNext.outerHTML);
+            buildLightbox(btnPrev.outerHTML + sortContent(item.getAttribute('href')) + btnNext.outerHTML);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
         }

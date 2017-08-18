@@ -4,7 +4,8 @@ LIGHTBOX
 =======================================================
 1. Base Styles
 2. Buttons
-3. Animations
+3. Videos
+4. Animations
 =======================================================
 */
 
@@ -85,7 +86,29 @@ LIGHTBOX
 
 /*
 -------------------------------------------------------
-3. Animations
+3. Videos
+-------------------------------------------------------
+*/
+
+.video-container {
+  height: 0;
+  width: 80vw;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*
+-------------------------------------------------------
+4. Animations
 -------------------------------------------------------
 */
 
