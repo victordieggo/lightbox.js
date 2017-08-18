@@ -51,8 +51,8 @@ LIGHTBOX
 */
 
 .lightbox-btn {
-  width: 2.3em;
-  height: 2.3em;
+  width: 2.2em;
+  height: 2.2em;
   position: absolute;
   border-radius: 50%;
   background-color: black;
@@ -64,24 +64,23 @@ LIGHTBOX
   top: -0.8em;
   right: -0.8em;
   background-size: 40%;
-  background-image: url('icons/icon-close.svg');
+  background-image: url('icons/icon-lightbox-close.svg');
 }
 
 .lightbox-btn-next,
 .lightbox-btn-prev {
   top: calc(50% - 1.5em);
-  background-size: 60%;
-  background-image: url('icons/icon-arrow.svg');
+  background-size: 25%;
+  background-image: url('icons/icon-lightbox-arrow.svg');
 }
 
 .lightbox-btn-prev {
   left: 1.5em;
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }
 
 .lightbox-btn-next {
   right: 1.5em;
-  transform: rotate(-90deg);
 }
 
 /*
