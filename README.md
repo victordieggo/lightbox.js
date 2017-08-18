@@ -15,12 +15,9 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 
 ```html
 <div class="gallery-item">
-  <a href="#lb-content" data-lightbox="gallery">
-    <img src="https://via.placeholder.com/300x300" alt="Thumbnail">
+  <a href="assets\dist\img\image-1.png" data-lightbox="gallery">
+    <img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail">
   </a>
-  <span id="lb-content" class="lightbox-content">
-    <img src="https://via.placeholder.com/730x460" alt="Full Image">
-  </span>
 </div>
 ```
 
