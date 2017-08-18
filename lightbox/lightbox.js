@@ -38,8 +38,19 @@
     }
 
     function sortContent(href) {
+        var videoID, player, playerWrapper;
         if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
             return '<img src="' + href + '" alt="">';
+        }
+        if (href.indexOf('youtube') !== -1) {
+            videoID = href.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+            playerWrapper = document.createElement('div');
+            playerWrapper.setAttribute('class', 'video-container');
+            player = document.createElement('iframe');
+            player.setAttribute('src', 'https://www.youtube.com/embed/' + videoID[2] + '?autoplay=1&rel=0');
+            player.setAttribute('allowfullscreen', '');
+            playerWrapper.appendChild(player);
+            return playerWrapper.outerHTML;
         }
         return document.querySelector(href).innerHTML;
     }
