@@ -15,7 +15,7 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 
 ```html
 <div class="gallery-item">
-  <a class="lightbox lightbox-gallery" data-content="lb-content" href="#">
+  <a href="#lb-content" data-lightbox="gallery">
     <img src="https://via.placeholder.com/300x300" alt="Thumbnail">
   </a>
   <span id="lb-content" class="lightbox-content">
@@ -27,9 +27,9 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 ### Modal/Inline Content ###
 
 ```html
-<button class="btn lightbox" data-content="modal-content">
+<a class="btn" href="#modal-content" data-lightbox>
   Click Me
-</button>
+</a>
 <div id="modal-content" class="lightbox-content">
   <div class="modal-content">
     <h3>Welcome!</h3>
