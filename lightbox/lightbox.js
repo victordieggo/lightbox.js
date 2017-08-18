@@ -37,6 +37,13 @@
         body.appendChild(container);
     }
 
+    function sortContent(href) {
+        if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
+            return '<img src="' + href + '" alt="">';
+        }
+        return document.querySelector(href).innerHTML;
+    }
+
     Array.prototype.forEach.call(btnLightbox, function (element) {
         element.addEventListener('click', function lightBox(event) {
             this.blur();
@@ -45,8 +52,7 @@
             this.classList.add('current-lightbox-item');
             lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
             var dataType = this.getAttribute('data-lightbox'),
-                dataContent = this.getAttribute('href'),
-                lightboxContent = document.querySelector(dataContent).innerHTML;
+                lightboxContent = sortContent(this.getAttribute('href'));
             if (dataType === 'gallery') {
                 container.classList.add('lightbox-gallery');
                 btnNext.setAttribute('class', 'lightbox-btn lightbox-btn-next');
@@ -64,12 +70,10 @@
                 next: currentItem.parentElement.nextElementSibling,
                 previous: currentItem.parentElement.previousElementSibling
             },
-            content,
             item;
         if (siblingItem[position] !== null) {
             item = siblingItem[position].querySelector('[data-lightbox]');
-            content = document.querySelector(item.getAttribute('href'));
-            buildLightbox(btnPrev.outerHTML + content.innerHTML + btnNext.outerHTML);
+            buildLightbox(btnPrev.outerHTML + sortContent(item.getAttribute('href')) + btnNext.outerHTML);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
         }
