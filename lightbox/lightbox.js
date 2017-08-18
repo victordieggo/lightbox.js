@@ -7,7 +7,7 @@
 
     'use strict';
 
-    var btnLightbox     = document.querySelectorAll('.lightbox'),
+    var btnLightbox     = document.querySelectorAll('[data-lightbox]'),
         btnClose        = document.createElement('button'),
         btnNext         = document.createElement('button'),
         btnPrev         = document.createElement('button'),
@@ -44,9 +44,10 @@
             event.preventDefault();
             this.classList.add('current-lightbox-item');
             lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
-            var dataContent = element.getAttribute('data-content'),
+            var dataType = this.getAttribute('data-lightbox'),
+                dataContent = this.getAttribute('data-lightbox-content'),
                 lightboxContent = document.getElementById(dataContent).innerHTML;
-            if (element.classList.contains('lightbox-gallery')) {
+            if (dataType === 'gallery') {
                 container.classList.add('lightbox-gallery');
                 btnNext.setAttribute('class', 'lightbox-btn lightbox-btn-next');
                 btnPrev.setAttribute('class', 'lightbox-btn lightbox-btn-prev');
@@ -68,9 +69,9 @@
             findItem = currentItem.parentElement.previousElementSibling;
         }
         if (findItem !== null) {
-            item = findItem.querySelector('.lightbox-gallery');
+            item = findItem.querySelector('[data-lightbox]');
             if (item !== null) {
-                content = document.getElementById(item.getAttribute('data-content')).innerHTML;
+                content = document.getElementById(item.getAttribute('data-lightbox-content')).innerHTML;
                 buildLightbox(btnPrev.outerHTML + content + btnNext.outerHTML);
                 currentItem.classList.remove('current-lightbox-item');
                 item.classList.add('current-lightbox-item');

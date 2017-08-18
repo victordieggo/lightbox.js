@@ -56,7 +56,7 @@
       <br/>
       <div class="teste">
         <div class="gallery-item">
-          <a class="lightbox lightbox-gallery" data-content="lb-content-1" href="#">
+          <a data-lightbox="gallery" data-lightbox-content="lb-content-1" href="#">
             <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
           </a>
           <span id="lb-content-1" class="lightbox-content">
@@ -64,7 +64,7 @@
           </span>
         </div>
         <div class="gallery-item">
-          <a class="lightbox lightbox-gallery" data-content="lb-content-2" href="#">
+          <a data-lightbox="gallery" data-lightbox-content="lb-content-2" href="#">
             <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
           </a>
           <span id="lb-content-2" class="lightbox-content">
@@ -72,7 +72,7 @@
           </span>
         </div>
         <div class="gallery-item">
-          <a class="lightbox lightbox-gallery" data-content="lb-content-3" href="#">
+          <a data-lightbox="gallery" data-lightbox-content="lb-content-3" href="#">
             <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
           </a>
           <span id="lb-content-3" class="lightbox-content">
@@ -80,7 +80,7 @@
           </span>
         </div>
         <div class="gallery-item">
-          <a class="lightbox lightbox-gallery" data-content="lb-content-4" href="#">
+          <a data-lightbox="gallery" data-lightbox-content="lb-content-4" href="#">
             <img src="https://via.placeholder.com/300x300" alt="Alt Text" />
           </a>
           <span id="lb-content-4" class="lightbox-content">
@@ -90,7 +90,7 @@
       </div>
       <br/>
       <pre><code class="language-markup">&lt;div class="gallery-item">
-  &lt;a class="lightbox lightbox-gallery" data-content="lb-content" href="#">
+  &lt;a data-lightbox="gallery" data-lightbox-content="lb-content" href="#">
     &lt;img src="https://via.placeholder.com/300x300" alt="Thumbnail">
   &lt;/a>
   &lt;span id="lb-content" class="lightbox-content">
@@ -103,7 +103,7 @@
       <h2>Modal/Inline Content</h2>
       <br/>
       <div>
-        <button class="btn lightbox" data-content="modal-1-content">Click Me</button>
+        <button class="btn" data-lightbox data-lightbox-content="modal-1-content">Click Me</button>
         <div id="modal-1-content" class="lightbox-content">
           <div class="modal-content">
             <h3>Welcome!</h3>
@@ -117,7 +117,7 @@
         </div>
       </div>
       <br/>
-      <pre><code class="language-markup">&ltbutton class="btn lightbox" data-content="modal-content">
+      <pre><code class="language-markup">&ltbutton class="btn" data-lightbox data-lightbox-content="modal-content">
   Click Me
 &lt/button>
 &ltdiv id="modal-content" class="lightbox-content">
