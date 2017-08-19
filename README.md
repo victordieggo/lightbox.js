@@ -13,16 +13,19 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 
 ### Usage ###
 
-Lightbox.js supports images, videos (youtube only, vimeo comes next) and inline content out of the box. It is triggered by adding the `data-lightbox` attribute to an `<a>` tag and its content is defined by the `href` attribute. When opening an image, you also can send its alt text using the `data-image-alt` attribute.
+Lightbox.js supports images, videos (Vimeo/Youtube) and inline content out of the box. It is triggered by adding the `data-lightbox` attribute to an `<a>` tag and its content is defined by the `href` attribute. When opening an image, you also can send its alt text using the `data-image-alt` attribute.
 
 ```html
-<a class="btn" href="#modal" data-lightbox>
-  Modal
-</a>
 <a class="btn" href="assets\dist\img\image-1.png" data-lightbox data-image-alt="Image 1">
   Image
 </a>
-<a class="btn" href="https://www.youtube.com/watch?v=PQVD-pMlKqA" data-lightbox>
+<a class="btn" href="#modal" data-lightbox>
+  Modal
+</a>
+<a class="btn" href="https://vimeo.com/83897470" data-lightbox>
+  Vimeo
+</a>
+<a class="btn" href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
   Youtube
 </a>
 <div id="modal" class="lightbox-content">

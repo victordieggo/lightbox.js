@@ -2,6 +2,7 @@
  * LIGHTBOX.JS
  * ===================================================================*/
 /*global window, document, setTimeout, console*/
+/*jslint regexp: true */
 
 (function () {
 
@@ -42,7 +43,10 @@
             imageAlt,
             videoID,
             player,
+            playerURL,
+            playerOptions,
             playerWrapper;
+
         if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
             imageAlt = item.getAttribute('data-image-alt');
             if (imageAlt !== null) {
@@ -50,16 +54,27 @@
             }
             return '<img src="' + href + '" alt="">';
         }
-        if (href.indexOf('youtube') !== -1) {
-            videoID = href.replace(/(>|<)/gi, '').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+
+        if (href.match(/(youtube|vimeo)/)) {
+            player = document.createElement('iframe');
+            player.setAttribute('allowfullscreen', '');
+            if (href.match('youtube')) {
+                videoID = href.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
+                playerURL = 'https://www.youtube.com/embed/';
+                playerOptions = '?autoplay=1&rel=0';
+            }
+            if (href.match('vimeo')) {
+                videoID = href.split(/video\/|https:\/\/vimeo\.com\//)[1].split(/[?&]/)[0];
+                playerURL = 'https://player.vimeo.com/video/';
+                playerOptions = '?autoplay=1title=0&byline=0&portrait=0';
+            }
+            player.setAttribute('src', playerURL + videoID + playerOptions);
             playerWrapper = document.createElement('div');
             playerWrapper.setAttribute('class', 'video-container');
-            player = document.createElement('iframe');
-            player.setAttribute('src', 'https://www.youtube.com/embed/' + videoID[2] + '?autoplay=1&rel=0');
-            player.setAttribute('allowfullscreen', '');
             playerWrapper.appendChild(player);
             return playerWrapper.outerHTML;
         }
+
         return document.querySelector(href).innerHTML;
     }
 
