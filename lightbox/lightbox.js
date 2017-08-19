@@ -2,7 +2,6 @@
  * LIGHTBOX.JS
  * ===================================================================*/
 /*global window, document, setTimeout, console*/
-/*jslint regexp: true */
 
 (function () {
 
