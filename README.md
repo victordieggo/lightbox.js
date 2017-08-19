@@ -13,16 +13,19 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 
 ### Usage ###
 
-This lightbox was designed to be as simple as possible while supporting images, videos (youtube only, vimeo comes next) and inline content out of the box. It is triggered by adding the `data-lightbox` attribute on any `<a>` tag and its content is defined by the `href` attribute:
+Lightbox.js supports images, videos (Vimeo/Youtube) and inline content out of the box. It is triggered by adding the `data-lightbox` attribute to an `<a>` tag and its content is defined by the `href` attribute. When opening an image, you also can send its alt text using the `data-image-alt` attribute.
 
 ```html
+<a class="btn" href="assets\dist\img\image-1.png" data-lightbox data-image-alt="Image 1">
+  Image
+</a>
 <a class="btn" href="#modal" data-lightbox>
   Modal
 </a>
-<a class="btn" href="assets\dist\img\image-1.png" data-lightbox>
-  Image
+<a class="btn" href="https://vimeo.com/83897470" data-lightbox>
+  Vimeo
 </a>
-<a class="btn" href="https://www.youtube.com/watch?v=PQVD-pMlKqA" data-lightbox>
+<a class="btn" href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
   Youtube
 </a>
 <div id="modal" class="lightbox-content">
@@ -38,13 +41,13 @@ This lightbox was designed to be as simple as possible while supporting images, 
 </div>
 ```
 
-### Image Gallery ###
+### Gallery ###
 
-The gallery is triggered whenever the `data-lightbox` attribute is set to `gallery`. If there are any previous or next items, they will be found automatically as long as their parents are siblings*. The navigation triggers on `click` and `keyup` events.
+The gallery is triggered whenever the `data-lightbox` attribute is set to `gallery`. If there are any previous or next items, they will be found automatically as long as their parents are siblings. The navigation triggers on `click` and `keyup` events.
 
 ```html
 <div class="gallery-item">
-  <a href="assets\dist\img\image-1.png" data-lightbox="gallery">
+  <a href="assets\dist\img\image-1.png" data-lightbox="gallery" data-image-alt="Image 1">
     <img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail">
   </a>
 </div>
