@@ -28,7 +28,9 @@ header {
   color: #fff;
   padding: 10em 0;
   position: relative;
-  background: url('../../dist/img/bg-header.png') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('../../dist/img/bg-header.png');
 }
 
 header:before {
@@ -39,7 +41,7 @@ header:before {
   z-index: -1;
   content: '';
   position: absolute;
-  background-color: #24292e;
+  background-color: #313b51;
   background: linear-gradient(to top, #313b51 0%, #161b24 100%);
 }
 
