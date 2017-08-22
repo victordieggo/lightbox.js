@@ -43,7 +43,7 @@ Add the `data-lightbox` attribute to an `<a>` tag and set its `href` to the cont
 
 ### Gallery ###
 
-Set the `data-lightbox` attribute to `gallery` on all `<a>` tags that belong to the same gallery and any previous or next items will be found automatically as long as they have a common parent element:
+Set the `data-lightbox` attribute to `"gallery"` on all `<a>` tags under the same parent element and any previous or next items will be found automatically:
 
 ```html
 <div class="gallery">
