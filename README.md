@@ -1,6 +1,6 @@
 # Lightbox.js #
 
-Lightbox.js is a simple and easily customizable lightbox plugin built with javascript and CSS. Minified and gzipped, it weights about 3kB.
+Lightbox.js is a simple, lightweight (about 2kB minified and gzipped) and easily customizable lightbox plugin built with Javascript and CSS which suports images, videos (Vimeo/Youtube) and inline content.
 
 ### Get Started ###
 
@@ -13,22 +13,22 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 
 ### Usage ###
 
-Lightbox.js supports images, videos (Vimeo/Youtube) and inline content out of the box. It is triggered by adding the `data-lightbox` attribute to an `<a>` tag and its content is defined by the `href` attribute. When opening an image, you also can send its alt text using the `data-image-alt` attribute.
+Add the `data-lightbox` attribute to an `<a>` tag and set its `href` to the content you want to be opened in the lightbox. When opening an image, you can send its alt text using the `data-image-alt` attribute:
 
 ```html
-<a class="btn" href="assets\dist\img\image-1.png" data-lightbox data-image-alt="Image 1">
+<a href="assets\dist\img\image-1.png" data-lightbox data-image-alt="Image 1">
   Image
 </a>
-<a class="btn" href="#modal" data-lightbox>
+<a href="#modal" data-lightbox>
   Modal
 </a>
-<a class="btn" href="https://vimeo.com/83897470" data-lightbox>
+<a href="https://vimeo.com/83897470" data-lightbox>
   Vimeo
 </a>
-<a class="btn" href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
+<a href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
   Youtube
 </a>
-<div id="modal" class="lightbox-content">
+<div id="modal" class="lightbox-hide">
   <div class="modal-content">
     <h3>Welcome!</h3>
     <p>Sign in to your account.</p>
@@ -43,13 +43,20 @@ Lightbox.js supports images, videos (Vimeo/Youtube) and inline content out of th
 
 ### Gallery ###
 
-The gallery is triggered whenever the `data-lightbox` attribute is set to `gallery`. If there are any previous or next items, they will be found automatically as long as their parents are siblings. The navigation triggers on `click` and `keyup` events.
+Set the `data-lightbox` attribute to `gallery` on all `<a>` tags that belong to the same gallery and any previous or next items will be found automatically as long as they have a common parent element:
 
 ```html
-<div class="gallery-item">
-  <a href="assets\dist\img\image-1.png" data-lightbox="gallery" data-image-alt="Image 1">
-    <img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail">
-  </a>
+<div class="gallery">
+  <div class="gallery-item">
+    <a href="assets\dist\img\image-1.png" data-lightbox="gallery" data-image-alt="Image 1">
+      <img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail 1">
+    </a>
+  </div>
+  <div class="gallery-item">
+    <a href="assets\dist\img\image-2.png" data-lightbox="gallery" data-image-alt="Image 2">
+      <img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail 2">
+    </a>
+  </div>
 </div>
 ```
 
