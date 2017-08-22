@@ -15,8 +15,11 @@ LIGHTBOX
 -------------------------------------------------------
 */
 
-.lightbox-content {
-  display: none;
+.lightbox-hide {
+  top: -9999px;
+  left: -9999px;
+  position: absolute;
+  visibility: hidden;
 }
 
 .lightbox-container {
@@ -29,7 +32,7 @@ LIGHTBOX
   transform: translate(-50%,-50%);
 }
 
-.lightbox-item-wrapper {
+.lightbox-wrapper {
   text-align: left;
   position: relative;
   display: inline-block;
@@ -56,7 +59,7 @@ LIGHTBOX
   height: 2.2em;
   position: absolute;
   border-radius: 50%;
-  background-color: black;
+  background-color: #000;
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -90,20 +93,19 @@ LIGHTBOX
 -------------------------------------------------------
 */
 
-.video-container {
-  height: 0;
+.lightbox-video-wrapper {
   width: 80vw;
   overflow: hidden;
   position: relative;
   padding-bottom: 56.25%;
 }
 
-.video-container iframe {
-  position: absolute;
+.lightbox-video-player {
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  position: absolute;
 }
 
 /*
