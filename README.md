@@ -16,7 +16,7 @@ Everything you'll need is located under the [`lightbox/`](lightbox/) directory. 
 Add the `data-lightbox` attribute to an `<a>` tag and set its `href` to the content you want to be opened in the lightbox. When opening an image, you can send its alt text using the `data-image-alt` attribute:
 
 ```html
-<a href="assets\dist\img\image-1.png" data-lightbox data-image-alt="Image 1">
+<a href="assets/dist/img/image-1.png" data-lightbox data-image-alt="Image 1">
   Image
 </a>
 <a href="#modal" data-lightbox>
@@ -48,13 +48,13 @@ Set the `data-lightbox` attribute to `"gallery"` on all `<a>` tags under the sam
 ```html
 <div class="gallery">
   <div class="gallery-item">
-    <a href="assets\dist\img\image-1.png" data-lightbox="gallery" data-image-alt="Image 1">
-      <img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail 1">
+    <a href="assets/dist/img/image-1.png" data-lightbox="gallery" data-image-alt="Image 1">
+      <img src="assets/dist/img/thumbnail-gallery.png" alt="Thumbnail 1">
     </a>
   </div>
   <div class="gallery-item">
-    <a href="assets\dist\img\image-2.png" data-lightbox="gallery" data-image-alt="Image 2">
-      <img src="assets\dist\img\thumbnail-gallery.png" alt="Thumbnail 2">
+    <a href="assets/dist/img/image-2.png" data-lightbox="gallery" data-image-alt="Image 2">
+      <img src="assets/dist/img/thumbnail-gallery.png" alt="Thumbnail 2">
     </a>
   </div>
 </div>
