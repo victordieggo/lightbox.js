@@ -30,7 +30,7 @@ header {
   position: relative;
   background-size: cover;
   background-attachment: fixed;
-  background-image: url('../../dist/img/bg-header.png');
+  background-image: url('../../dist/svg/bg-header.svg');
 }
 
 header:before {
