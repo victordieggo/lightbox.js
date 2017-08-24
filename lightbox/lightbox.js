@@ -15,27 +15,27 @@
             body.removeAttribute('style');
         } else {
             screenCover = document.createElement('div');
-            screenCover.setAttribute('class', 'screen-cover');
+            screenCover.className = 'screen-cover';
             screenCover.style.animation = 'fadeIn 0.30s';
             body.style.overflow = 'hidden';
             body.appendChild(screenCover);
         }
     }
 
-    function sortContent(item) {
-        var href = item.getAttribute('href'),
-            imageAlt,
-            video = {};
+    function sortContent(content) {
+        var image, video, href = content.getAttribute('href');
 
         if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
-            imageAlt = item.getAttribute('data-image-alt');
-            if (imageAlt !== null) {
-                return '<img src="' + href + '" alt="' + imageAlt + '">';
+            image = document.createElement('img');
+            image.src = href;
+            if (content.getAttribute('data-image-alt') !== null) {
+                image.alt = content.getAttribute('data-image-alt');
             }
-            return '<img src="' + href + '" alt="">';
+            return image.outerHTML;
         }
 
         if (href.match(/(youtube|vimeo)/)) {
+            video = [];
             if (href.match('youtube')) {
                 video.id = href.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
                 video.url = 'https://www.youtube.com/embed/';
@@ -48,10 +48,10 @@
             }
             video.player = document.createElement('iframe');
             video.player.setAttribute('allowfullscreen', '');
-            video.player.setAttribute('class', 'lightbox-video-player');
-            video.player.setAttribute('src', video.url + video.id + video.options);
+            video.player.className = 'lightbox-video-player';
+            video.player.src = video.url + video.id + video.options;
             video.wrapper = document.createElement('div');
-            video.wrapper.setAttribute('class', 'lightbox-video-wrapper');
+            video.wrapper.className = 'lightbox-video-wrapper';
             video.wrapper.appendChild(video.player);
             return video.wrapper.outerHTML;
         }
@@ -68,26 +68,26 @@
             this.classList.add('current-lightbox-item');
 
             btnClose = document.createElement('button');
-            btnClose.setAttribute('class', 'lightbox-btn lightbox-btn-close');
+            btnClose.className = 'lightbox-btn lightbox-btn-close';
 
             lightboxContent = document.createElement('div');
-            lightboxContent.setAttribute('class', 'lightbox-content');
+            lightboxContent.className = 'lightbox-content';
             lightboxContent.innerHTML = sortContent(this);
 
             lightboxWrapper = lightboxContent.cloneNode(false);
-            lightboxWrapper.setAttribute('class', 'lightbox-wrapper');
+            lightboxWrapper.className = 'lightbox-wrapper';
             lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
             lightboxWrapper.innerHTML = lightboxContent.outerHTML + btnClose.outerHTML;
 
             lightboxContainer = lightboxContent.cloneNode(false);
-            lightboxContainer.setAttribute('class', 'lightbox-container');
+            lightboxContainer.className = 'lightbox-container';
 
             if (this.getAttribute('data-lightbox') === 'gallery') {
                 lightboxContainer.classList.add('lightbox-gallery');
-                btnNext = btnClose.cloneNode();
-                btnPrev = btnClose.cloneNode();
-                btnNext.setAttribute('class', 'lightbox-btn lightbox-btn-next');
-                btnPrev.setAttribute('class', 'lightbox-btn lightbox-btn-prev');
+                btnNext = btnClose.cloneNode(false);
+                btnPrev = btnClose.cloneNode(false);
+                btnNext.className = 'lightbox-btn lightbox-btn-next';
+                btnPrev.className = 'lightbox-btn lightbox-btn-prev';
                 lightboxWrapper.innerHTML += btnNext.outerHTML + btnPrev.outerHTML;
             }
 
