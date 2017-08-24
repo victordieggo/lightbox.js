@@ -1,7 +1,10 @@
 /* =====================================================================
- * LIGHTBOX.JS
- * ===================================================================*/
-/*global window, document, setTimeout, console*/
+ * Lightbox.js
+ * Version: 0.0.2
+ * Author: Victor Diego <victordieggo@gmail.com>
+ * License: MIT
+ * ================================================================== */
+/*global document, setTimeout*/
 
 (function () {
 
