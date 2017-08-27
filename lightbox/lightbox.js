@@ -62,6 +62,13 @@
         return body.querySelector(href).innerHTML;
     }
 
+    function galleryItens(currentItem) {
+        return {
+            next: currentItem.parentElement.nextElementSibling,
+            previous: currentItem.parentElement.previousElementSibling
+        };
+    }
+
     Array.prototype.forEach.call(body.querySelectorAll('[data-lightbox]'), function (element) {
         element.addEventListener('click', function (event) {
 
@@ -90,7 +97,13 @@
                 btnNext = btnClose.cloneNode(false);
                 btnPrev = btnClose.cloneNode(false);
                 btnNext.className = 'lightbox-btn lightbox-btn-next';
-                btnPrev.className = 'lightbox-btn lightbox-btn-prev';
+                btnPrev.className = 'lightbox-btn lightbox-btn-previous';
+                if (galleryItens(this).next === null) {
+                    btnNext.disabled = true;
+                }
+                if (galleryItens(this).previous === null) {
+                    btnPrev.disabled = true;
+                }
                 lightboxWrapper.innerHTML += btnNext.outerHTML + btnPrev.outerHTML;
             }
 
@@ -103,16 +116,22 @@
     function galleryNavigation(position) {
         lightboxWrapper.removeAttribute('style');
         var currentItem = body.querySelector('.current-lightbox-item'),
-            siblingItem = {
-                next: currentItem.parentElement.nextElementSibling,
-                previous: currentItem.parentElement.previousElementSibling
-            },
             item;
-        if (siblingItem[position] !== null) {
-            item = siblingItem[position].querySelector('[data-lightbox]');
+        if (galleryItens(currentItem)[position] !== null) {
+            item = galleryItens(currentItem)[position].querySelector('[data-lightbox]');
             body.querySelector('.lightbox-content').innerHTML = sortContent(item);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
+            if (galleryItens(item).next === null) {
+                body.querySelector('.lightbox-btn-next').disabled = true;
+            } else {
+                body.querySelector('.lightbox-btn-next').disabled = false;
+            }
+            if (galleryItens(item).previous === null) {
+                body.querySelector('.lightbox-btn-previous').disabled = true;
+            } else {
+                body.querySelector('.lightbox-btn-previous').disabled = false;
+            }
         }
     }
 
@@ -137,7 +156,7 @@
                 closeLightbox();
             } else if (target === body.querySelector('.lightbox-btn-next')) {
                 galleryNavigation('next');
-            } else if (target === body.querySelector('.lightbox-btn-prev')) {
+            } else if (target === body.querySelector('.lightbox-btn-previous')) {
                 galleryNavigation('previous');
             }
         }
