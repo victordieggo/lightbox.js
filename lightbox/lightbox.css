@@ -1,6 +1,9 @@
 /*
 =======================================================
-LIGHTBOX
+Lightbox.js
+Version: 0.0.3
+Author: Victor Diego <victordieggo@gmail.com>
+License: MIT
 =======================================================
 1. Base Styles
 2. Buttons
@@ -80,7 +83,7 @@ LIGHTBOX
 .lightbox-btn-next,
 .lightbox-btn-previous {
   top: calc(50% - 1.5em);
-  background-size: 25%;
+  background-size: 25% 80%;
   background-image: url('icons/icon-lightbox-arrow.svg');
 }
 
