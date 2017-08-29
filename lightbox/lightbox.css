@@ -83,7 +83,7 @@ License: MIT
 .lightbox-btn-next,
 .lightbox-btn-previous {
   top: calc(50% - 1.5em);
-  background-size: 25%;
+  background-size: 25% 80%;
   background-image: url('icons/icon-lightbox-arrow.svg');
 }
 
