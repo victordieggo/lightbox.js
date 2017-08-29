@@ -116,12 +116,14 @@
             item;
         if (galleryItens(currentItem)[position] !== null) {
             item = galleryItens(currentItem)[position].querySelector('[data-lightbox]');
-            lightboxContent.innerHTML = sortContent(item);
-            currentItem.classList.remove('current-lightbox-item');
-            item.classList.add('current-lightbox-item');
-            Array.prototype.forEach.call([[btnNext, 'next'], [btnPrev, 'previous']], function (btn) {
-                btn[0].disabled = galleryItens(item)[btn[1]] === null ? true : false;
-            });
+            if (item !== null) {
+                lightboxContent.innerHTML = sortContent(item);
+                currentItem.classList.remove('current-lightbox-item');
+                item.classList.add('current-lightbox-item');
+                Array.prototype.forEach.call([[btnNext, 'next'], [btnPrev, 'previous']], function (btn) {
+                    btn[0].disabled = galleryItens(item)[btn[1]] === null ? true : false;
+                });
+            }
         }
     }
 
@@ -146,7 +148,7 @@
         });
     });
 
-    document.addEventListener('click', function (event) {
+    body.addEventListener('click', function (event) {
         if (body.contains(lightboxContainer)) {
             var target = event.target;
             if (target === lightboxContainer || target === screenCover || target === btnClose) {
@@ -161,7 +163,7 @@
         }
     });
 
-    document.addEventListener('keyup', function (event) {
+    body.addEventListener('keyup', function (event) {
         if (body.contains(lightboxContainer)) {
             var key = event.keyCode;
             if (key === 27) {
