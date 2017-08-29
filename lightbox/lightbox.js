@@ -55,7 +55,7 @@
             video.player.src = video.url + video.id + video.options;
             video.wrapper = document.createElement('div');
             video.wrapper.className = 'lightbox-video-wrapper';
-            video.wrapper.appendChild(video.player);
+            video.wrapper.innerHTML = video.player.outerHTML;
             return video.wrapper.outerHTML;
         }
 
