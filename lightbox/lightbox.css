@@ -59,9 +59,15 @@ LIGHTBOX
   height: 2.2em;
   position: absolute;
   border-radius: 50%;
+  transition: all 0.3s;
   background-color: #000;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.lightbox-btn:disabled {
+  cursor: initial;
+  background-color: #adadad;
 }
 
 .lightbox-btn-close {
@@ -72,13 +78,13 @@ LIGHTBOX
 }
 
 .lightbox-btn-next,
-.lightbox-btn-prev {
+.lightbox-btn-previous {
   top: calc(50% - 1.5em);
   background-size: 25%;
   background-image: url('icons/icon-lightbox-arrow.svg');
 }
 
-.lightbox-btn-prev {
+.lightbox-btn-previous {
   left: 1.5em;
   transform: rotate(180deg);
 }

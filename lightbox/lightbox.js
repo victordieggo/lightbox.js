@@ -55,64 +55,86 @@
             video.player.src = video.url + video.id + video.options;
             video.wrapper = document.createElement('div');
             video.wrapper.className = 'lightbox-video-wrapper';
-            video.wrapper.appendChild(video.player);
+            video.wrapper.innerHTML = video.player.outerHTML;
             return video.wrapper.outerHTML;
         }
 
         return body.querySelector(href).innerHTML;
     }
 
-    Array.prototype.forEach.call(body.querySelectorAll('[data-lightbox]'), function (element) {
-        element.addEventListener('click', function (event) {
-
-            this.blur();
-            lockScreen();
-            event.preventDefault();
-            this.classList.add('current-lightbox-item');
-
-            btnClose = document.createElement('button');
-            btnClose.className = 'lightbox-btn lightbox-btn-close';
-
-            lightboxContent = document.createElement('div');
-            lightboxContent.className = 'lightbox-content';
-            lightboxContent.innerHTML = sortContent(this);
-
-            lightboxWrapper = lightboxContent.cloneNode(false);
-            lightboxWrapper.className = 'lightbox-wrapper';
-            lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
-            lightboxWrapper.innerHTML = lightboxContent.outerHTML + btnClose.outerHTML;
-
-            lightboxContainer = lightboxContent.cloneNode(false);
-            lightboxContainer.className = 'lightbox-container';
-
-            if (this.getAttribute('data-lightbox') === 'gallery') {
-                lightboxContainer.classList.add('lightbox-gallery');
-                btnNext = btnClose.cloneNode(false);
-                btnPrev = btnClose.cloneNode(false);
-                btnNext.className = 'lightbox-btn lightbox-btn-next';
-                btnPrev.className = 'lightbox-btn lightbox-btn-prev';
-                lightboxWrapper.innerHTML += btnNext.outerHTML + btnPrev.outerHTML;
+    function galleryItens(currentItem) {
+        var itens = {
+                next: currentItem.parentElement.nextElementSibling,
+                previous: currentItem.parentElement.previousElementSibling
+            },
+            key;
+        for (key in itens) {
+            if (itens[key] !== null) {
+                itens[key] = itens[key].querySelector('[data-lightbox]');
             }
+        }
+        return itens;
+    }
 
-            lightboxContainer.innerHTML = lightboxWrapper.outerHTML;
-            body.appendChild(lightboxContainer);
+    function buildLightbox(element) {
+        lockScreen();
+        element.blur();
+        element.classList.add('current-lightbox-item');
 
-        });
-    });
+        btnClose = document.createElement('button');
+        btnClose.className = 'lightbox-btn lightbox-btn-close';
+
+        lightboxContent = document.createElement('div');
+        lightboxContent.className = 'lightbox-content';
+        lightboxContent.innerHTML = sortContent(element);
+
+        lightboxWrapper = lightboxContent.cloneNode(false);
+        lightboxWrapper.className = 'lightbox-wrapper';
+        lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
+        lightboxWrapper.innerHTML = lightboxContent.outerHTML + btnClose.outerHTML;
+
+        lightboxContainer = lightboxContent.cloneNode(false);
+        lightboxContainer.className = 'lightbox-container';
+
+        if (element.getAttribute('data-lightbox') === 'gallery') {
+            lightboxContainer.classList.add('lightbox-gallery');
+            var btn = {next: btnNext, previous: btnPrev}, key;
+            for (key in btn) {
+                if (btn.hasOwnProperty(key)) {
+                    btn[key] = btnClose.cloneNode(false);
+                    btn[key].className = 'lightbox-btn lightbox-btn-' + key;
+                    btn[key].disabled = galleryItens(element)[key] === null ? true : false;
+                    lightboxWrapper.innerHTML += btn[key].outerHTML;
+                }
+            }
+        }
+
+        lightboxContainer.innerHTML = lightboxWrapper.outerHTML;
+        body.appendChild(lightboxContainer);
+
+        btnClose = body.querySelector('.lightbox-btn-close');
+        btnNext = body.querySelector('.lightbox-btn-next');
+        btnPrev = body.querySelector('.lightbox-btn-previous');
+        lightboxContent = body.querySelector('.lightbox-content');
+        lightboxWrapper = body.querySelector('.lightbox-wrapper');
+        lightboxContainer = body.querySelector('.lightbox-container');
+    }
 
     function galleryNavigation(position) {
         lightboxWrapper.removeAttribute('style');
         var currentItem = body.querySelector('.current-lightbox-item'),
-            siblingItem = {
-                next: currentItem.parentElement.nextElementSibling,
-                previous: currentItem.parentElement.previousElementSibling
-            },
-            item;
-        if (siblingItem[position] !== null) {
-            item = siblingItem[position].querySelector('[data-lightbox]');
-            body.querySelector('.lightbox-content').innerHTML = sortContent(item);
+            item = galleryItens(currentItem)[position],
+            btn = {next: btnNext, previous: btnPrev},
+            key;
+        if (item !== null) {
+            lightboxContent.innerHTML = sortContent(item);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
+            for (key in btn) {
+                if (btn.hasOwnProperty(key)) {
+                    btn[key].disabled = galleryItens(item)[key] === null ? true : false;
+                }
+            }
         }
     }
 
@@ -130,21 +152,30 @@
         }, 200);
     }
 
-    document.addEventListener('click', function (event) {
-        if (body.querySelector('.lightbox-container')) {
+    Array.prototype.forEach.call(body.querySelectorAll('[data-lightbox]'), function (element) {
+        element.addEventListener('click', function (event) {
+            event.preventDefault();
+            buildLightbox(element);
+        });
+    });
+
+    body.addEventListener('click', function (event) {
+        if (body.contains(lightboxContainer)) {
             var target = event.target;
-            if (target === lightboxContainer || target === screenCover || target === body.querySelector('.lightbox-btn-close')) {
+            if (target === lightboxContainer || target === screenCover || target === btnClose) {
                 closeLightbox();
-            } else if (target === body.querySelector('.lightbox-btn-next')) {
+            }
+            if (target === btnNext) {
                 galleryNavigation('next');
-            } else if (target === body.querySelector('.lightbox-btn-prev')) {
+            }
+            if (target === btnPrev) {
                 galleryNavigation('previous');
             }
         }
     });
 
-    document.addEventListener('keyup', function (event) {
-        if (body.querySelector('.lightbox-container')) {
+    body.addEventListener('keyup', function (event) {
+        if (body.contains(lightboxContainer)) {
             var key = event.keyCode;
             if (key === 27) {
                 closeLightbox();
