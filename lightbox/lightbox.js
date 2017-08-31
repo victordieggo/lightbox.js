@@ -40,6 +40,7 @@
         if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
             image = document.createElement('img');
             image.src = href;
+            image.className = 'lightbox-image';
             if (content.getAttribute('data-image-alt') !== null) {
                 image.alt = content.getAttribute('data-image-alt');
             }
