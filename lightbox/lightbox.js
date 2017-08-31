@@ -10,7 +10,18 @@
 
     'use strict';
 
-    var btnClose, btnNext, btnPrev, lightboxContainer, lightboxWrapper, lightboxContent, screenCover, body = document.body;
+    var animation, body, btnClose, btnNext, btnPrev, container, content, wrapper, screenCover, trigger;
+
+    body = document.body;
+
+    trigger = body.querySelectorAll('[data-lightbox]');
+
+    animation = {
+        fadeIn: 'fadeIn .3s',
+        fadeOut: 'fadeOut .3s',
+        scaleIn: 'createBox .3s',
+        scaleOut: 'deleteBox .3s'
+    };
 
     function lockScreen() {
         if (body.querySelector('.screen-cover')) {
@@ -19,7 +30,7 @@
         } else {
             screenCover = document.createElement('div');
             screenCover.className = 'screen-cover';
-            screenCover.style.animation = 'fadeIn 0.30s';
+            screenCover.style.animation = animation.fadeIn;
             body.style.overflow = 'hidden';
             body.appendChild(screenCover);
         }
@@ -31,41 +42,42 @@
         if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
             image = document.createElement('img');
             image.src = href;
+            image.className = 'lightbox-image';
             if (content.getAttribute('data-image-alt') !== null) {
                 image.alt = content.getAttribute('data-image-alt');
             }
-            return image.outerHTML;
+            return image;
         }
 
         if (href.match(/(youtube|vimeo)/)) {
             video = [];
             if (href.match('youtube')) {
                 video.id = href.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
-                video.url = 'https://www.youtube.com/embed/';
+                video.url = 'www.youtube.com/embed/';
                 video.options = '?autoplay=1&rel=0';
             }
             if (href.match('vimeo')) {
                 video.id = href.split(/video\/|https:\/\/vimeo\.com\//)[1].split(/[?&]/)[0];
-                video.url = 'https://player.vimeo.com/video/';
+                video.url = 'player.vimeo.com/video/';
                 video.options = '?autoplay=1title=0&byline=0&portrait=0';
             }
             video.player = document.createElement('iframe');
             video.player.setAttribute('allowfullscreen', '');
             video.player.className = 'lightbox-video-player';
-            video.player.src = video.url + video.id + video.options;
+            video.player.src = 'https://' + video.url + video.id + video.options;
             video.wrapper = document.createElement('div');
             video.wrapper.className = 'lightbox-video-wrapper';
-            video.wrapper.innerHTML = video.player.outerHTML;
-            return video.wrapper.outerHTML;
+            video.wrapper.appendChild(video.player);
+            return video.wrapper;
         }
 
-        return body.querySelector(href).innerHTML;
+        return body.querySelector(href).children[0].cloneNode(true);
     }
 
-    function galleryItens(currentItem) {
+    function galleryItens(element) {
         var itens = {
-                next: currentItem.parentElement.nextElementSibling,
-                previous: currentItem.parentElement.previousElementSibling
+                next: element.parentElement.nextElementSibling,
+                previous: element.parentElement.previousElementSibling
             },
             key;
         for (key in itens) {
@@ -84,50 +96,50 @@
         btnClose = document.createElement('button');
         btnClose.className = 'lightbox-btn lightbox-btn-close';
 
-        lightboxContent = document.createElement('div');
-        lightboxContent.className = 'lightbox-content';
-        lightboxContent.innerHTML = sortContent(element);
+        content = document.createElement('div');
+        content.className = 'lightbox-content';
+        content.appendChild(sortContent(element));
 
-        lightboxWrapper = lightboxContent.cloneNode(false);
-        lightboxWrapper.className = 'lightbox-wrapper';
-        lightboxWrapper.style.animation = 'createBox 0.30s, fadeIn 0.30s';
-        lightboxWrapper.innerHTML = lightboxContent.outerHTML + btnClose.outerHTML;
+        wrapper = content.cloneNode(false);
+        wrapper.className = 'lightbox-wrapper';
+        wrapper.style.animation = [animation.scaleIn, animation.fadeIn];
+        wrapper.appendChild(content);
+        wrapper.appendChild(btnClose);
 
-        lightboxContainer = lightboxContent.cloneNode(false);
-        lightboxContainer.className = 'lightbox-container';
+        container = content.cloneNode(false);
+        container.className = 'lightbox-container';
+        container.appendChild(wrapper);
 
         if (element.getAttribute('data-lightbox') === 'gallery') {
-            lightboxContainer.classList.add('lightbox-gallery');
-            var btn = {next: btnNext, previous: btnPrev}, key;
+            container.classList.add('lightbox-gallery');
+            var btn = {next: '', previous: ''}, key;
             for (key in btn) {
                 if (btn.hasOwnProperty(key)) {
                     btn[key] = btnClose.cloneNode(false);
                     btn[key].className = 'lightbox-btn lightbox-btn-' + key;
                     btn[key].disabled = galleryItens(element)[key] === null ? true : false;
-                    lightboxWrapper.innerHTML += btn[key].outerHTML;
+                    wrapper.appendChild(btn[key]);
                 }
             }
         }
 
-        lightboxContainer.innerHTML = lightboxWrapper.outerHTML;
-        body.appendChild(lightboxContainer);
-
-        btnClose = body.querySelector('.lightbox-btn-close');
+        body.appendChild(container);
         btnNext = body.querySelector('.lightbox-btn-next');
         btnPrev = body.querySelector('.lightbox-btn-previous');
-        lightboxContent = body.querySelector('.lightbox-content');
-        lightboxWrapper = body.querySelector('.lightbox-wrapper');
-        lightboxContainer = body.querySelector('.lightbox-container');
     }
 
     function galleryNavigation(position) {
-        lightboxWrapper.removeAttribute('style');
+        wrapper.removeAttribute('style');
         var currentItem = body.querySelector('.current-lightbox-item'),
             item = galleryItens(currentItem)[position],
             btn = {next: btnNext, previous: btnPrev},
             key;
         if (item !== null) {
-            lightboxContent.innerHTML = sortContent(item);
+            content.style.animation = animation.fadeOut;
+            setTimeout(function () {
+                content.replaceChild(sortContent(item), content.children[0]);
+                content.style.animation = animation.fadeIn;
+            }, 200);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
             for (key in btn) {
@@ -139,11 +151,11 @@
     }
 
     function closeLightbox() {
-        screenCover.style.animation = 'fadeOut 0.30s';
-        body.querySelector('.lightbox-wrapper').style.animation = 'deleteBox 0.30s, fadeOut 0.30s';
+        screenCover.style.animation = animation.fadeOut;
+        wrapper.style.animation = [animation.scaleOut, animation.fadeOut];
         setTimeout(function () {
             lockScreen();
-            body.removeChild(lightboxContainer);
+            body.removeChild(container);
             var currentItem = body.querySelector('.current-lightbox-item');
             if (currentItem !== null) {
                 currentItem.focus();
@@ -152,7 +164,7 @@
         }, 200);
     }
 
-    Array.prototype.forEach.call(body.querySelectorAll('[data-lightbox]'), function (element) {
+    Array.prototype.forEach.call(trigger, function (element) {
         element.addEventListener('click', function (event) {
             event.preventDefault();
             buildLightbox(element);
@@ -160,9 +172,9 @@
     });
 
     body.addEventListener('click', function (event) {
-        if (body.contains(lightboxContainer)) {
+        if (body.contains(container)) {
             var target = event.target;
-            if (target === lightboxContainer || target === screenCover || target === btnClose) {
+            if (target === container || target === screenCover || target === btnClose) {
                 closeLightbox();
             }
             if (target === btnNext) {
@@ -175,12 +187,12 @@
     });
 
     body.addEventListener('keyup', function (event) {
-        if (body.contains(lightboxContainer)) {
+        if (body.contains(container)) {
             var key = event.keyCode;
             if (key === 27) {
                 closeLightbox();
             }
-            if (lightboxContainer.classList.contains('lightbox-gallery')) {
+            if (container.classList.contains('lightbox-gallery')) {
                 if (key === 39) {
                     galleryNavigation('next');
                 } else if (key === 37) {

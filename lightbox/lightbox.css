@@ -41,6 +41,10 @@ License: MIT
   display: inline-block;
 }
 
+.lightbox-image {
+  vertical-align: middle;
+}
+
 .screen-cover {
   top: 0;
   left: 0;
