@@ -10,9 +10,11 @@
 
     'use strict';
 
-    var animation, btnClose, btnNext, btnPrev, container, wrapper, content, screenCover, body;
+    var animation, body, btnClose, btnNext, btnPrev, container, content, wrapper, screenCover, trigger;
 
     body = document.body;
+
+    trigger = body.querySelectorAll('[data-lightbox]');
 
     animation = {
         fadeIn: 'fadeIn .3s',
@@ -44,32 +46,32 @@
             if (content.getAttribute('data-image-alt') !== null) {
                 image.alt = content.getAttribute('data-image-alt');
             }
-            return image.outerHTML;
+            return image;
         }
 
         if (href.match(/(youtube|vimeo)/)) {
             video = [];
             if (href.match('youtube')) {
                 video.id = href.split(/v\/|v=|youtu\.be\//)[1].split(/[?&]/)[0];
-                video.url = 'https://www.youtube.com/embed/';
+                video.url = 'www.youtube.com/embed/';
                 video.options = '?autoplay=1&rel=0';
             }
             if (href.match('vimeo')) {
                 video.id = href.split(/video\/|https:\/\/vimeo\.com\//)[1].split(/[?&]/)[0];
-                video.url = 'https://player.vimeo.com/video/';
+                video.url = 'player.vimeo.com/video/';
                 video.options = '?autoplay=1title=0&byline=0&portrait=0';
             }
             video.player = document.createElement('iframe');
             video.player.setAttribute('allowfullscreen', '');
             video.player.className = 'lightbox-video-player';
-            video.player.src = video.url + video.id + video.options;
+            video.player.src = 'https://' + video.url + video.id + video.options;
             video.wrapper = document.createElement('div');
             video.wrapper.className = 'lightbox-video-wrapper';
-            video.wrapper.innerHTML = video.player.outerHTML;
-            return video.wrapper.outerHTML;
+            video.wrapper.appendChild(video.player);
+            return video.wrapper;
         }
 
-        return body.querySelector(href).innerHTML;
+        return body.querySelector(href).children[0].cloneNode(true);
     }
 
     function galleryItens(element) {
@@ -96,38 +98,34 @@
 
         content = document.createElement('div');
         content.className = 'lightbox-content';
-        content.innerHTML = sortContent(element);
+        content.appendChild(sortContent(element));
 
         wrapper = content.cloneNode(false);
         wrapper.className = 'lightbox-wrapper';
         wrapper.style.animation = [animation.scaleIn, animation.fadeIn];
-        wrapper.innerHTML = content.outerHTML + btnClose.outerHTML;
+        wrapper.appendChild(content);
+        wrapper.appendChild(btnClose);
 
         container = content.cloneNode(false);
         container.className = 'lightbox-container';
+        container.appendChild(wrapper);
 
         if (element.getAttribute('data-lightbox') === 'gallery') {
             container.classList.add('lightbox-gallery');
-            var btn = {next: btnNext, previous: btnPrev}, key;
+            var btn = {next: '', previous: ''}, key;
             for (key in btn) {
                 if (btn.hasOwnProperty(key)) {
                     btn[key] = btnClose.cloneNode(false);
                     btn[key].className = 'lightbox-btn lightbox-btn-' + key;
                     btn[key].disabled = galleryItens(element)[key] === null ? true : false;
-                    wrapper.innerHTML += btn[key].outerHTML;
+                    wrapper.appendChild(btn[key]);
                 }
             }
         }
 
-        container.innerHTML = wrapper.outerHTML;
         body.appendChild(container);
-
-        btnClose = body.querySelector('.lightbox-btn-close');
         btnNext = body.querySelector('.lightbox-btn-next');
         btnPrev = body.querySelector('.lightbox-btn-previous');
-        content = body.querySelector('.lightbox-content');
-        wrapper = body.querySelector('.lightbox-wrapper');
-        container = body.querySelector('.lightbox-container');
     }
 
     function galleryNavigation(position) {
@@ -139,8 +137,8 @@
         if (item !== null) {
             content.style.animation = animation.fadeOut;
             setTimeout(function () {
+                content.replaceChild(sortContent(item), content.children[0]);
                 content.style.animation = animation.fadeIn;
-                content.innerHTML = sortContent(item);
             }, 200);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
@@ -166,7 +164,7 @@
         }, 200);
     }
 
-    Array.prototype.forEach.call(body.querySelectorAll('[data-lightbox]'), function (element) {
+    Array.prototype.forEach.call(trigger, function (element) {
         element.addEventListener('click', function (event) {
             event.preventDefault();
             buildLightbox(element);
