@@ -10,7 +10,7 @@
 
     'use strict';
 
-    var animation, body, btnClose, btnNext, btnPrev, container, content, wrapper, screenCover, trigger;
+    var animation, body, btnClose, btnNext, btnPrev, currentItem, container, content, wrapper, screenCover, trigger;
 
     body = document.body;
 
@@ -91,6 +91,7 @@
     function buildLightbox(element) {
         lockScreen();
         element.blur();
+        currentItem = element;
         element.classList.add('current-lightbox-item');
 
         btnClose = document.createElement('button');
@@ -130,8 +131,7 @@
 
     function galleryNavigation(position) {
         wrapper.removeAttribute('style');
-        var currentItem = body.querySelector('.current-lightbox-item'),
-            item = galleryItens(currentItem)[position],
+        var item = galleryItens(currentItem)[position],
             btn = {next: btnNext, previous: btnPrev},
             key;
         if (item !== null) {
@@ -142,6 +142,7 @@
             }, 200);
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
+            currentItem = item;
             for (key in btn) {
                 if (btn.hasOwnProperty(key)) {
                     btn[key].disabled = galleryItens(item)[key] === null ? true : false;
@@ -156,11 +157,8 @@
         setTimeout(function () {
             lockScreen();
             body.removeChild(container);
-            var currentItem = body.querySelector('.current-lightbox-item');
-            if (currentItem !== null) {
-                currentItem.focus();
-                currentItem.classList.remove('current-lightbox-item');
-            }
+            currentItem.focus();
+            currentItem.classList.remove('current-lightbox-item');
         }, 200);
     }
 
