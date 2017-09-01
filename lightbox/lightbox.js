@@ -39,13 +39,11 @@
     function sortContent(content) {
         var image, video, href = content.getAttribute('href');
 
-        if (href.match(/\.(jpeg|jpg|gif|png)$/) !== null) {
+        if (href.match(/\.(jpeg|jpg|gif|png)/)) {
             image = document.createElement('img');
-            image.src = href;
             image.className = 'lightbox-image';
-            if (content.getAttribute('data-image-alt') !== null) {
-                image.alt = content.getAttribute('data-image-alt');
-            }
+            image.src = href;
+            image.alt = content.getAttribute('data-image-alt');
             return image;
         }
 
