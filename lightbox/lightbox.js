@@ -23,19 +23,6 @@
         scaleOut: 'deleteBox .3s'
     };
 
-    function lockScreen() {
-        if (body.querySelector('.screen-cover')) {
-            body.removeChild(screenCover);
-            body.removeAttribute('style');
-        } else {
-            screenCover = document.createElement('div');
-            screenCover.className = 'screen-cover';
-            screenCover.style.animation = animation.fadeIn;
-            body.style.overflow = 'hidden';
-            body.appendChild(screenCover);
-        }
-    }
-
     function sortContent(content) {
         var image, video, href = content.getAttribute('href');
 
@@ -87,7 +74,6 @@
     }
 
     function buildLightbox(element) {
-        lockScreen();
         element.blur();
         currentItem = element;
         element.classList.add('current-lightbox-item');
@@ -95,17 +81,21 @@
         btnClose = document.createElement('button');
         btnClose.className = 'lightbox-btn lightbox-btn-close';
 
-        content = document.createElement('div');
+        screenCover = document.createElement('div');
+        screenCover.className = 'screen-cover';
+        screenCover.style.animation = animation.fadeIn;
+
+        content = screenCover.cloneNode(false);
         content.className = 'lightbox-content';
         content.appendChild(sortContent(element));
 
-        wrapper = content.cloneNode(false);
+        wrapper = screenCover.cloneNode(false);
         wrapper.className = 'lightbox-wrapper';
         wrapper.style.animation = [animation.scaleIn, animation.fadeIn];
         wrapper.appendChild(content);
         wrapper.appendChild(btnClose);
 
-        container = content.cloneNode(false);
+        container = screenCover.cloneNode(false);
         container.className = 'lightbox-container';
         container.appendChild(wrapper);
 
@@ -122,7 +112,10 @@
             }
         }
 
+        body.style.overflow = 'hidden';
+        body.appendChild(screenCover);
         body.appendChild(container);
+
         btnNext = body.querySelector('.lightbox-btn-next');
         btnPrev = body.querySelector('.lightbox-btn-previous');
     }
@@ -153,10 +146,13 @@
         screenCover.style.animation = animation.fadeOut;
         wrapper.style.animation = [animation.scaleOut, animation.fadeOut];
         setTimeout(function () {
-            lockScreen();
-            body.removeChild(container);
-            currentItem.focus();
-            currentItem.classList.remove('current-lightbox-item');
+            if (body.contains(screenCover)) {
+                body.removeAttribute('style');
+                body.removeChild(screenCover);
+                body.removeChild(container);
+                currentItem.focus();
+                currentItem.classList.remove('current-lightbox-item');
+            }
         }, 200);
     }
 
