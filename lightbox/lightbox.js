@@ -10,7 +10,7 @@
 
     'use strict';
 
-    var animation, body, btnClose, btnNext, btnPrev, currentItem, container, content, wrapper, screenCover, trigger;
+    var animation, body, btnClose, btnNav, currentItem, container, content, wrapper, screenCover, trigger;
 
     body = document.body;
 
@@ -101,13 +101,14 @@
 
         if (element.getAttribute('data-lightbox') === 'gallery') {
             container.classList.add('lightbox-gallery');
-            var btn = {next: '', previous: ''}, key;
-            for (key in btn) {
-                if (btn.hasOwnProperty(key)) {
-                    btn[key] = btnClose.cloneNode(false);
-                    btn[key].className = 'lightbox-btn lightbox-btn-' + key;
-                    btn[key].disabled = galleryItens(element)[key] === null ? true : false;
-                    wrapper.appendChild(btn[key]);
+            var key;
+            btnNav = {next: '', previous: ''};
+            for (key in btnNav) {
+                if (btnNav.hasOwnProperty(key)) {
+                    btnNav[key] = btnClose.cloneNode(false);
+                    btnNav[key].className = 'lightbox-btn lightbox-btn-' + key;
+                    btnNav[key].disabled = galleryItens(element)[key] === null ? true : false;
+                    wrapper.appendChild(btnNav[key]);
                 }
             }
         }
@@ -115,15 +116,11 @@
         body.style.overflow = 'hidden';
         body.appendChild(screenCover);
         body.appendChild(container);
-
-        btnNext = body.querySelector('.lightbox-btn-next');
-        btnPrev = body.querySelector('.lightbox-btn-previous');
     }
 
     function galleryNavigation(position) {
         wrapper.removeAttribute('style');
         var item = galleryItens(currentItem)[position],
-            btn = {next: btnNext, previous: btnPrev},
             key;
         if (item !== null) {
             content.style.animation = animation.fadeOut;
@@ -134,9 +131,9 @@
             currentItem.classList.remove('current-lightbox-item');
             item.classList.add('current-lightbox-item');
             currentItem = item;
-            for (key in btn) {
-                if (btn.hasOwnProperty(key)) {
-                    btn[key].disabled = galleryItens(item)[key] === null ? true : false;
+            for (key in btnNav) {
+                if (btnNav.hasOwnProperty(key)) {
+                    btnNav[key].disabled = galleryItens(item)[key] === null ? true : false;
                 }
             }
         }
@@ -169,10 +166,10 @@
             if (target === container || target === screenCover || target === btnClose) {
                 closeLightbox();
             }
-            if (target === btnNext) {
+            if (target === btnNav.next) {
                 galleryNavigation('next');
             }
-            if (target === btnPrev) {
+            if (target === btnNav.previous) {
                 galleryNavigation('previous');
             }
         }
@@ -187,7 +184,8 @@
             if (container.classList.contains('lightbox-gallery')) {
                 if (key === 39) {
                     galleryNavigation('next');
-                } else if (key === 37) {
+                }
+                if (key === 37) {
                     galleryNavigation('previous');
                 }
             }
