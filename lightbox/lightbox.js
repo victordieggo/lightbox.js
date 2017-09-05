@@ -160,36 +160,24 @@
         });
     });
 
-    body.addEventListener('click', function (event) {
-        if (body.contains(container)) {
-            var target = event.target;
-            if (target === container || target === screenCover || target === btnClose) {
-                closeLightbox();
-            }
-            if (target === btnNav.next) {
-                galleryNavigation('next');
-            }
-            if (target === btnNav.previous) {
-                galleryNavigation('previous');
-            }
-        }
-    });
-
-    body.addEventListener('keyup', function (event) {
-        if (body.contains(container)) {
-            var key = event.keyCode;
-            if (key === 27) {
-                closeLightbox();
-            }
-            if (container.classList.contains('lightbox-gallery')) {
-                if (key === 39) {
-                    galleryNavigation('next');
+    Array.prototype.forEach.call(['click', 'keyup'], function (event) {
+        body.addEventListener(event, function (event) {
+            if (body.contains(container)) {
+                var target = event.target,
+                    key = event.keyCode;
+                if ([container, screenCover, btnClose].indexOf(target) !== -1 || key === 27) {
+                    closeLightbox();
                 }
-                if (key === 37) {
-                    galleryNavigation('previous');
+                if (container.classList.contains('lightbox-gallery')) {
+                    if (target === btnNav.next || key === 39) {
+                        galleryNavigation('next');
+                    }
+                    if (target === btnNav.previous || key === 37) {
+                        galleryNavigation('previous');
+                    }
                 }
             }
-        }
+        });
     });
 
 }());
