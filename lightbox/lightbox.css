@@ -26,33 +26,27 @@ License: MIT
 }
 
 .lightbox-container {
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  padding: 2em;
-  position: fixed;
-  text-align: center;
-  transform: translate(-50%,-50%);
-}
-
-.lightbox-wrapper {
-  text-align: left;
-  position: relative;
-  display: inline-block;
-}
-
-.lightbox-image {
-  vertical-align: middle;
-}
-
-.screen-cover {
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  padding: 2em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: fixed;
+  align-items: center;
+  justify-content: center;
   background-color: rgb(29, 29, 29);
-  background-color: rgba(29, 29, 29, 0.7);
+  background-color: rgba(29, 29, 29, 0.8);
+}
+
+.lightbox-wrapper {
+  position: relative;
+}
+
+.lightbox-image {
+  vertical-align: middle;
 }
 
 /*

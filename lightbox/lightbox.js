@@ -10,7 +10,7 @@
 
     'use strict';
 
-    var animation, body, btnClose, btnNav, currentItem, container, content, wrapper, screenCover, trigger;
+    var animation, body, btnClose, btnNav, currentItem, container, content, wrapper, trigger;
 
     body = document.body;
 
@@ -81,22 +81,19 @@
         btnClose = document.createElement('button');
         btnClose.className = 'lightbox-btn lightbox-btn-close';
 
-        screenCover = document.createElement('div');
-        screenCover.className = 'screen-cover';
-        screenCover.style.animation = animation.fadeIn;
-
-        content = screenCover.cloneNode(false);
+        content = document.createElement('div');
         content.className = 'lightbox-content';
         content.appendChild(sortContent(element));
 
-        wrapper = screenCover.cloneNode(false);
+        wrapper = content.cloneNode(false);
         wrapper.className = 'lightbox-wrapper';
         wrapper.style.animation = [animation.scaleIn, animation.fadeIn];
         wrapper.appendChild(content);
         wrapper.appendChild(btnClose);
 
-        container = screenCover.cloneNode(false);
+        container = content.cloneNode(false);
         container.className = 'lightbox-container';
+        container.style.animation = animation.fadeIn;
         container.appendChild(wrapper);
 
         if (element.getAttribute('data-lightbox') === 'gallery') {
@@ -113,9 +110,8 @@
             }
         }
 
-        body.style.overflow = 'hidden';
-        body.appendChild(screenCover);
         body.appendChild(container);
+        body.style.overflow = 'hidden';
     }
 
     function galleryNavigation(position) {
@@ -140,12 +136,11 @@
     }
 
     function closeLightbox() {
-        screenCover.style.animation = animation.fadeOut;
+        container.style.animation = animation.fadeOut;
         wrapper.style.animation = [animation.scaleOut, animation.fadeOut];
         setTimeout(function () {
-            if (body.contains(screenCover)) {
+            if (body.contains(container)) {
                 body.removeAttribute('style');
-                body.removeChild(screenCover);
                 body.removeChild(container);
                 currentItem.focus();
                 currentItem.classList.remove('current-lightbox-item');
@@ -156,7 +151,7 @@
     Array.prototype.forEach.call(trigger, function (element) {
         element.addEventListener('click', function (event) {
             event.preventDefault();
-            buildLightbox(element);
+            buildLightbox(this);
         });
     });
 
@@ -165,7 +160,7 @@
             if (body.contains(container)) {
                 var target = event.target,
                     key = event.keyCode;
-                if ([container, screenCover, btnClose].indexOf(target) !== -1 || key === 27) {
+                if ([container, btnClose].indexOf(target) !== -1 || key === 27) {
                     closeLightbox();
                 }
                 if (container.classList.contains('lightbox-gallery')) {
