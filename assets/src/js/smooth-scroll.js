@@ -33,7 +33,7 @@
         }
         runAnimation = setInterval(animateScroll, 16);
     }
-    Array.prototype.forEach.call(document.querySelectorAll('a[href*="#"]:not([href="#"])'), function (toggle) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-scroll]'), function (toggle) {
         toggle.addEventListener('click', function (e) {
             e.preventDefault();
             var dataID = toggle.getAttribute('href'),
