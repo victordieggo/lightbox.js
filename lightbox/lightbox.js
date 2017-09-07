@@ -1,6 +1,6 @@
 /* =====================================================================
  * Lightbox.js
- * Version: 0.0.4
+ * Version: 0.0.5
  * Author: Victor Diego <victordieggo@gmail.com>
  * License: MIT
  * ================================================================== */
@@ -159,15 +159,16 @@
         body.addEventListener(event, function (event) {
             if (body.contains(container)) {
                 var target = event.target,
-                    key = event.keyCode;
+                    key = event.keyCode,
+                    type = event.type;
                 if ([container, btnClose].indexOf(target) !== -1 || key === 27) {
                     closeLightbox();
                 }
                 if (container.classList.contains('lightbox-gallery')) {
-                    if (target === btnNav.next || key === 39) {
+                    if ((target === btnNav.next && type === 'click') || key === 39) {
                         galleryNavigation('next');
                     }
-                    if (target === btnNav.previous || key === 37) {
+                    if ((target === btnNav.previous && type === 'click') || key === 37) {
                         galleryNavigation('previous');
                     }
                 }
