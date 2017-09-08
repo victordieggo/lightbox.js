@@ -16,21 +16,35 @@ LAYOUT
 
 .wrapper {
   max-width: 50em;
-  margin: 0 auto;
   padding: 1em;
-}
-
-main .wrapper {
-  margin: 2em auto;
 }
 
 header {
   color: #fff;
-  padding: 10em 0;
+  height: 32em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   position: relative;
+  align-items: center;
+  justify-content: center;
   background-size: cover;
   background-attachment: fixed;
   background-image: url('../../dist/svg/bg-header.svg');
+}
+
+@media only screen and (max-width: 768px) {
+
+  .wrapper {
+    padding: 1em 2em;
+  }
+
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  header {
+     background-attachment: inherit;
+  }
 }
 
 header:before {
@@ -55,8 +69,8 @@ header h2 {
   font-size: 1.3em;
 }
 
-header img {
-  vertical-align: top;
+main .wrapper {
+  margin: 2em auto;
 }
 
 footer {

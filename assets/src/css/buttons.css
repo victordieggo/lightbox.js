@@ -7,13 +7,34 @@ BUTTONS
 .btn {
   color: #fff;
   padding: 0 1em;
-  line-height: 2.7;
+  height: 2.65em;
+  line-height: 2.65;
   border-radius: 4px;
   position: relative;
-  white-space: normal;
+  vertical-align: top;
   display: inline-block;
-  vertical-align: middle;
+  background-color: #2152b9;
   background: linear-gradient(to top, #2152b9 0%, #4d7ce0 100%);
+}
+
+@-moz-document url-prefix() {
+  .btn {
+     line-height: 2.57em;
+  }
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .btn {
+     line-height: 2.57em;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+
+  .btn {
+    line-height: 2.75;
+  }
+
 }
 
 .btn-outline:before {
