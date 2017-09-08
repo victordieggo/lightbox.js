@@ -21,7 +21,9 @@ LAYOUT
 
 header {
   color: #fff;
-  height: 70vh;
+  height: 32em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
   position: relative;
   align-items: center;
@@ -32,10 +34,6 @@ header {
 }
 
 @media only screen and (max-width: 768px) {
-
-  header {
-    height: 100vh;
-  }
 
   .wrapper {
     padding: 1em 2em;
