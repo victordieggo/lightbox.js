@@ -1,7 +1,7 @@
 /*
 =======================================================
 Lightbox.js
-Version: 0.0.5
+Version: 0.0.6
 Author: Victor Diego <victordieggo@gmail.com>
 License: MIT
 =======================================================
@@ -17,6 +17,10 @@ License: MIT
 1. Base Styles
 -------------------------------------------------------
 */
+
+.remove-scroll {
+  overflow: hidden;
+}
 
 .lightbox-hide {
   top: -9999px;
@@ -46,6 +50,7 @@ License: MIT
 }
 
 .lightbox-image {
+  max-height: 100vh;
   vertical-align: middle;
 }
 

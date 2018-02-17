@@ -1,16 +1,15 @@
 /* =====================================================================
  * Lightbox.js
- * Version: 0.0.5
+ * Version: 0.0.6
  * Author: Victor Diego <victordieggo@gmail.com>
  * License: MIT
  * ================================================================== */
-/*global document, setTimeout*/
 
 (function () {
 
     'use strict';
 
-    var animation, body, btnClose, btnNav, currentItem, container, content, wrapper, trigger;
+    var animation, body, btnClose, btnNav, currentItem, container, content, wrapper, trigger, currentTrigger;
 
     body = document.body;
 
@@ -22,6 +21,10 @@
         scaleIn: 'createBox .3s',
         scaleOut: 'deleteBox .3s'
     };
+
+    function toggleScroll() {
+      body.classList.toggle('remove-scroll');
+    }
 
     function sortContent(content) {
         var image, video, href = content.getAttribute('href');
@@ -94,6 +97,7 @@
         container = content.cloneNode(false);
         container.className = 'lightbox-container';
         container.style.animation = animation.fadeIn;
+        container.onclick = function() {};
         container.appendChild(wrapper);
 
         if (element.getAttribute('data-lightbox') === 'gallery') {
@@ -111,7 +115,7 @@
         }
 
         body.appendChild(container);
-        body.style.overflow = 'hidden';
+        toggleScroll();
     }
 
     function galleryNavigation(position) {
@@ -140,10 +144,10 @@
         wrapper.style.animation = [animation.scaleOut, animation.fadeOut];
         setTimeout(function () {
             if (body.contains(container)) {
-                body.removeAttribute('style');
                 body.removeChild(container);
-                currentItem.focus();
+                currentTrigger.focus();
                 currentItem.classList.remove('current-lightbox-item');
+                toggleScroll();
             }
         }, 200);
     }
@@ -151,12 +155,13 @@
     Array.prototype.forEach.call(trigger, function (element) {
         element.addEventListener('click', function (event) {
             event.preventDefault();
-            buildLightbox(this);
+            buildLightbox(element);
+            currentTrigger = element;
         });
     });
 
-    Array.prototype.forEach.call(['click', 'keyup'], function (event) {
-        body.addEventListener(event, function (event) {
+    ['click', 'keyup'].forEach( function (eventType) {
+        body.addEventListener(eventType, function (event) {
             if (body.contains(container)) {
                 var target = event.target,
                     key = event.keyCode,
