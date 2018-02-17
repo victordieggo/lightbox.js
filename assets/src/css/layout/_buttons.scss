@@ -1,0 +1,52 @@
+/*
+=======================================================
+Buttons
+=======================================================
+1. Default Styles
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Default Styles
+-------------------------------------------------------
+*/
+
+.btn {
+  @include vcenter;
+  color: color(light);
+  padding: 0 1em;
+  position: relative;
+  height: $fe-height;
+  text-align: center;
+  white-space: normal;
+  line-height: $fe-lineHeight;
+  background: linear-gradient(to top, #074edc 0%, #1e67f8 100%);
+  border-radius: $fe-borderRadius;
+
+  &:focus,
+  &:hover {
+    background: linear-gradient(to top, darken(#074edc, 8%) 0%, darken(#1e67f8, 8%) 100%);
+    text-decoration: none;
+    outline: none;
+  }
+
+  &-outline {
+    &:not(:hover):not(:focus) {
+      color: inherit;
+      background: none;
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      content: '';
+      z-index: -1;
+      position: absolute;
+      border: solid 2px #1e67f8;
+      border-radius: $fe-borderRadius;
+    }
+  }
+}

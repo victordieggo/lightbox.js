@@ -1,0 +1,9 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "declaration-empty-line-before": "never",
+    "at-rule-no-unknown": [ true, {
+      ignoreAtRules: ['content', 'debug', 'each', 'else', 'extend', 'for', 'function', 'if', 'include', 'mixin', 'return', 'warn', 'while']
+    }]
+  }
+}

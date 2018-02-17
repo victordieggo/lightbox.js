@@ -1,0 +1,110 @@
+/*
+=======================================================
+Mixins
+=======================================================
+1. Breakpoints
+2. Colors
+3. Container
+4. Spacing
+5. Utilities
+6. Z-Index
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Breakpoints
+-------------------------------------------------------
+*/
+
+@function breakpoint($key) {
+  @return map-get($breakpoints, $key);
+}
+
+@mixin media-breakpoint($size, $property: max) {
+  $size: breakpoint($size);
+
+  @if $property == min {
+    $size: $size + 1;
+  }
+
+  @media (#{$property}-width: $size) {
+    @content;
+  }
+}
+
+/*
+-------------------------------------------------------
+2. Colors
+-------------------------------------------------------
+*/
+
+@function color($key) {
+  @return map-get($colors, $key);
+}
+
+/*
+-------------------------------------------------------
+3. Container
+-------------------------------------------------------
+*/
+
+@mixin container($size) {
+  max-width: #{$size};
+  margin: 0 auto;
+}
+
+/*
+-------------------------------------------------------
+4. Spacing
+-------------------------------------------------------
+*/
+
+@mixin spacing($name, $property, $zero: false) {
+  $i: 5;
+
+  @while $i < 35 {
+    $result: $i/10;
+    $result: #{$result}em;
+    $class: #{$name}-#{$i};
+
+    @if $zero == true {
+      $result: #{$result} 0;
+    }
+
+    @if $i < 10 {
+      $class: #{$name}-0#{$i};
+    }
+
+    .#{$class} {
+      #{$property}: #{$result};
+    }
+
+    $i: $i + 5;
+  }
+}
+
+/*
+-------------------------------------------------------
+5. Utilities
+-------------------------------------------------------
+*/
+
+@mixin vcenter {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+@mixin hideElement {
+  top: -9999px;
+  left: -9999px;
+  position: absolute;
+  visibility: hidden;
+}
+
+@mixin showElement {
+  top: 0;
+  left: 0;
+  position: static;
+  visibility: visible;
+}
