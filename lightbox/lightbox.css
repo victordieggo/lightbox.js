@@ -18,6 +18,10 @@ License: MIT
 -------------------------------------------------------
 */
 
+.remove-scroll {
+  overflow: hidden;
+}
+
 .lightbox-hide {
   top: -9999px;
   left: -9999px;
@@ -46,6 +50,7 @@ License: MIT
 }
 
 .lightbox-image {
+  max-height: 100vh;
   vertical-align: middle;
 }
 
