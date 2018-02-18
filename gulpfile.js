@@ -135,28 +135,27 @@ gulp.task('js-lint', () => {
     .pipe(eslint.format())
 });
 
-const buildJS = (srcPath, fileName, distPath) => {
-  gulp.src(srcPath)
+gulp.task('js-build', () => {
+  gulp.src([assets.js.vndr, assets.js.src])
     .pipe(babel({
       presets: ['env']
     }))
-    .pipe(concat(fileName))
+    .pipe(concat('main.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(distPath))
+    .pipe(gulp.dest(assets.js.dist))
     .pipe(browserSync.stream());
-};
+});
 
-gulp.task('js-build', buildJS(
-  [assets.js.vndr, assets.js.src],
-  'main.js',
-  assets.js.dist
-));
-
-gulp.task('js-lightbox', buildJS(
-  lightbox.js,
-  'lightbox.min.js',
-  lightbox.root
-));
+gulp.task('js-lightbox', () => {
+  gulp.src(lightbox.js)
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(concat('lightbox.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(lightbox.root))
+    .pipe(browserSync.stream());
+});
 
 gulp.task('js', ['js-lint', 'js-build', 'js-lightbox']);
 
