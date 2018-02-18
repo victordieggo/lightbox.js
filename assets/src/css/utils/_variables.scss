@@ -1,0 +1,59 @@
+/*
+=======================================================
+Theme
+=======================================================
+1. Viewports
+2. Colors
+3. Font Sizes
+4. Form Elements
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Viewports
+-------------------------------------------------------
+*/
+
+$breakpoints: (
+  xs: 480px,
+  sm: 768px,
+  md: 992px
+);
+
+/*
+-------------------------------------------------------
+2. Colors
+-------------------------------------------------------
+*/
+
+$colors: (
+  light: #fff,
+  dark:  #222,
+  main:  #2a4961,
+  alt:   #172835
+);
+
+/*
+-------------------------------------------------------
+3. Font Sizes
+-------------------------------------------------------
+*/
+
+$fontSize-default:  1em;
+$fontSize-interval: 0.3;
+$fontSize-headings: $fontSize-default + 1.7;
+$fontSize-small:    $fontSize-default - 0.2;
+$fontSize-large:    $fontSize-default + $fontSize-interval;
+
+/*
+-------------------------------------------------------
+4. Form Elements
+-------------------------------------------------------
+*/
+
+$formElements:    'input, button, select, textarea';
+$base-height:     2.75;
+$fe-height:       #{$base-height}em;
+$fe-lineHeight:   $base-height;
+$fe-borderRadius: 0.3rem;

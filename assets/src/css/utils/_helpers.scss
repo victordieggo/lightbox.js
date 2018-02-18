@@ -1,0 +1,236 @@
+/*
+=======================================================
+Helpers
+=======================================================
+1. Background
+2. Container
+3. Display
+4. Floating
+5. Headings
+6. Hide/Show
+7. Misc
+8. Padding
+9. Position
+10. Sizing
+11. Spacers
+12. Text Utilities
+13. Z-Index
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Background
+-------------------------------------------------------
+*/
+
+@each $class, $color in $colors {
+  .bg-#{$class} {
+    background-color: $color;
+  }
+}
+
+.bg-image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*
+-------------------------------------------------------
+2. Container
+-------------------------------------------------------
+*/
+
+.container {
+  @include container(50em);
+  padding: 1em;
+}
+
+/*
+-------------------------------------------------------
+3. Display
+-------------------------------------------------------
+*/
+
+@each $display in 'block', 'inline', 'inline-block', 'table', 'table-cell' {
+  .#{$display} {
+    display: #{$display};
+  }
+}
+
+/*
+-------------------------------------------------------
+4. Floating
+-------------------------------------------------------
+*/
+
+@each $float in 'left', 'right', 'none' {
+  .f#{$float} {
+    float: #{$float};
+  }
+}
+
+.clear {
+  clear: both;
+}
+
+/*
+-------------------------------------------------------
+5. Headings
+-------------------------------------------------------
+*/
+
+@for $i from 1 through 6 {
+  h#{$i},
+  .title-#{$i} {
+    font-size: $fontSize-headings;
+  }
+
+  $fontSize-headings: $fontSize-headings - $fontSize-interval;
+}
+
+/*
+-------------------------------------------------------
+6. Hide/Show
+-------------------------------------------------------
+*/
+
+.hide,
+.show-md,
+.show-sm,
+.show-xs {
+  @include hideElement;
+}
+
+@each $breakpoint in $breakpoints {
+  @include media-breakpoint(nth($breakpoint, 1)) {
+    .show-#{nth($breakpoint, 1)} {
+      @include showElement;
+    }
+
+    .hide-#{nth($breakpoint, 1)} {
+      @include hideElement;
+    }
+  }
+}
+
+/*
+-------------------------------------------------------
+7. Misc
+-------------------------------------------------------
+*/
+
+.label,
+.vcenter {
+  @include vcenter;
+}
+
+.label {
+  padding: 0.4em 0.6em;
+  border-radius: 0.2em;
+}
+
+.hide-overflow {
+  overflow: hidden;
+}
+
+.smooth-transition {
+  transition: all 0.3s;
+}
+
+.no-underline:hover {
+  text-decoration: none;
+}
+
+/*
+-------------------------------------------------------
+8. Padding
+-------------------------------------------------------
+*/
+
+@include spacing(pad, padding);
+@include spacing(pad-top, padding-top);
+@include spacing(pad-bottom, padding-bottom);
+
+/*
+-------------------------------------------------------
+9. Position
+-------------------------------------------------------
+*/
+
+@each $position in 'relative', 'absolute', 'fixed' {
+  .#{$position} {
+    position: #{$position};
+  }
+}
+
+/*
+-------------------------------------------------------
+10. Sizing
+-------------------------------------------------------
+*/
+
+.auto-size,
+.auto-width {
+  width: auto;
+}
+
+.auto-size,
+.auto-height {
+  height: auto;
+}
+
+.full-size,
+.full-width {
+  width: 100%;
+}
+
+.full-size,
+.full-height {
+  height: 100%;
+}
+
+/*
+-------------------------------------------------------
+11. Spacers
+-------------------------------------------------------
+*/
+
+@include spacing(spacer, margin, true);
+@include spacing(spacer-top, margin-top);
+@include spacing(spacer-bottom, margin-bottom);
+
+/*
+-------------------------------------------------------
+12. Text Utilities
+-------------------------------------------------------
+*/
+
+@each $align in 'center', 'left', 'right' {
+  .align-#{$align} {
+    text-align: #{$align};
+  }
+}
+
+@each $class, $color in $colors {
+  .text-#{$class} {
+    color: $color;
+  }
+}
+
+@each $sufix, $size in (small: $fontSize-small, large: $fontSize-large) {
+  .btn-#{$sufix},
+  .text-#{$sufix},
+  .input-#{$sufix} {
+    font-size: $size;
+  }
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-block {
+  line-height: 160%;
+}

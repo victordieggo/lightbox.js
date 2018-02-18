@@ -1,0 +1,96 @@
+/*
+=======================================================
+Form Elements
+=======================================================
+1. Base Styles
+2. Custom Checkbox/Radio
+3. Custom Select
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Base Styles
+-------------------------------------------------------
+*/
+
+.input:not(textarea),
+.select:not([multiple]) {
+  height: $fe-height;
+}
+
+.input,
+.select,
+.input-icon {
+  @include vcenter;
+  background-color: color(light);
+  border: solid 1px color(grey);
+  border-radius: $fe-borderRadius;
+  padding: 0.65em;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input:focus,
+.select:focus,
+:focus + .input-icon {
+  border-color: color(darkgrey);
+  box-shadow: 0 0 1px color(darkgrey);
+  outline: none;
+}
+
+@each $prefix in '::-webkit', ':-ms' {
+  #{$prefix}-input-placeholder {
+    color: color(darkgrey);
+  }
+}
+
+/*
+-------------------------------------------------------
+2. Custom Checkbox/Radio
+-------------------------------------------------------
+*/
+
+.radio input,
+.checkbox input {
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  position: absolute;
+  width: 1px;
+}
+
+.input-icon {
+  cursor: pointer;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-top: -0.1em;
+}
+
+.radio .input-icon {
+  border-radius: 50%;
+}
+
+.checkbox :checked + .input-icon {
+  background-image: url('../../dist/svg/icon-check.svg');
+  background-size: 60%;
+}
+
+.radio :checked + .input-icon {
+  background-image: url('../../dist/svg/icon-circle.svg');
+  background-size: 35%;
+}
+
+/*
+-------------------------------------------------------
+3. Custom Select
+-------------------------------------------------------
+*/
+
+.select:not([multiple]) {
+  background-image: url('../../dist/svg/icon-arrow-alt.svg');
+  background-position: right 0.6em center;
+  background-repeat: no-repeat;
+  background-size: 0.85em 1em;
+  padding-right: 2.4em;
+}

@@ -1,11 +1,11 @@
-<!DOCTYPE HTML>
-<html lang="en">
+<!doctype html>
+<html lang="pt-br">
 
 <head>
-  <meta charset="UTF-8"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lightbox.js - A simple and easily customizable lightbox plugin.</title>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
-  <link href="assets/dist/css/style.css" rel="stylesheet">
+  <link href="assets/dist/css/main.css" rel="stylesheet">
   <link href="lightbox/lightbox.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <link rel="canonical" href="https://victordiego.com/lightbox/">
@@ -28,21 +28,23 @@
 </head>
 
 <body>
-  <header>
-    <div class="wrapper align-center">
-      <h1>Lightbox.js</h1>
-      <br/>
-      <h2 class="text-block">A simple and easily customizable lightbox plugin.</h2>
-      <br/>
-      <a class="btn" href="https://github.com/victordieggo/lightbox.js/releases/latest" target="_blank">Download</a>
-      <a class="btn btn-outline" href="#get-started" data-scroll>Get started</a>
-    </div>
+
+  <header class="header text-light align-center relative">
+    <h1>Lightbox.js</h1>
+    <p class="title-6 spacer-bottom-15">
+      A simple and easily customizable lightbox plugin.
+    </p>
+    <a class="btn" href="https://github.com/victordieggo/lightbox.js/releases/latest" target="_blank">
+      Download
+    </a>
+    <a class="btn btn-outline" href="#get-started" data-scroll>
+      Get started
+    </a>
   </header>
 
-  <main>
-
-    <section id="get-started" class="wrapper">
-      <h2>Get Started</h2>
+  <main class="container">
+    <section id="get-started" class="section">
+      <h2 class="title-5">Get Started</h2>
       <br/>
       <p class="text-block">Everything you'll need is located under the lightbox/ directory. Include the javascript and css files in your HTML document and you're all set up:</p>
       <br/>
@@ -50,8 +52,8 @@
 &lt;script src="lightbox/lightbox.min.js">&lt;/script></code></pre>
     </section>
 
-    <section id="usage" class="wrapper">
-      <h2>Usage</h2>
+    <section id="usage" class="section">
+      <h2 class="title-5">Usage</h2>
       <br/>
       <p class="text-block">Add the <span class="code">data-lightbox</span> attribute to an <span class="code">&#60;a></span> tag and set its <span class="code">href</span> to the content you want to be opened in the lightbox. When opening an image, you can send its alt text using the <span class="code">data-image-alt</span> attribute:</p>
       <br/>
@@ -68,13 +70,13 @@
         <a class="btn" href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
           Youtube
         </a>
-        <div id="modal" class="lightbox-hide">
-          <div class="modal-content">
+        <div id="modal" hidden>
+          <div class="modal-content bg-light pad-15">
             <h3>Welcome!</h3>
-            <p>Sign in to your account.</p>
+            <p class="spacer-bottom-10">Sign in to your account.</p>
             <form action="/lightbox.js" method="post">
-              <input type="email" name="email" placeholder="e-mail account">
-              <input type="password" name="password" placeholder="password">
+              <input class="input full-width spacer-bottom-10" type="email" name="email" placeholder="e-mail account">
+              <input class="input full-width spacer-bottom-10" type="password" name="password" placeholder="password">
               <input class="btn" type="submit" name="submit" value="Sign In">
             </form>
           </div>
@@ -93,7 +95,7 @@
 &lt;a href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
   Youtube
 &lt;/a>
-&lt;div id="modal" class="lightbox-hide">
+&lt;div id="modal" hidden>
   &lt;div class="modal-content">
     &lt;h3>Welcome!&lt;/h3>
     &lt;p>Sign in to your account.&lt;/p>
@@ -106,31 +108,31 @@
 &lt;/div></code></pre>
     </section>
 
-    <section id="gallery" class="wrapper">
-      <h2>Gallery</h2>
+    <section id="gallery" class="section">
+      <h2 class="title-5">Gallery</h2>
       <br/>
       <p class="text-block">
         Set the <span class="code">data-lightbox</span> attribute to <span class="code">"gallery"</span> on all <span class="code">&#60;a></span> tags under the same parent element and any previous or next items will be found automatically:</p>
       <br/>
       <div class="image-gallery">
-        <div class="gallery-item">
+        <div class="gallery-item vcenter">
           <a href="assets/dist/img/image-1.png" data-lightbox="gallery" data-image-alt="Image 1">
-            <img src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
+            <img class="vcenter" src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
           </a>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item vcenter">
           <a href="assets/dist/img/image-2.png" data-lightbox="gallery" data-image-alt="Image 2">
-            <img src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
+            <img class="vcenter" src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
           </a>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item vcenter">
           <a href="assets/dist/img/image-3.png" data-lightbox="gallery" data-image-alt="Image 3">
-            <img src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
+            <img class="vcenter" src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
           </a>
         </div>
-        <div class="gallery-item">
+        <div class="gallery-item vcenter">
           <a href="assets/dist/img/image-4.png" data-lightbox="gallery" data-image-alt="Image 4">
-            <img src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
+            <img class="vcenter" src="assets/dist/img/thumbnail-gallery.png" alt="Alt Text" />
           </a>
         </div>
       </div>
@@ -148,10 +150,9 @@
   &lt;/div>
 &lt;/div></code></pre>
     </section>
-
   </main>
 
-  <footer class="text-block">
+  <footer class="footer bg-main text-light align-center pad-20">
     Built by <a href="https://victordiego.com/" target="_blank">Victor Diego</a> under the <a href="https://victordieggo.mit-license.org/" target="_blank">MIT license</a>.
   </footer>
 

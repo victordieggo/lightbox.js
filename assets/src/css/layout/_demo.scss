@@ -1,0 +1,58 @@
+/*
+=======================================================
+Demo Layout
+=======================================================
+1. Header
+2. Main Content
+=======================================================
+*/
+
+/*
+-------------------------------------------------------
+1. Header
+-------------------------------------------------------
+*/
+
+.header {
+  padding: 10.5em 0;
+  background-size: cover;
+  background-attachment: fixed;
+  background-image: url('../../dist/svg/bg-header.svg');
+
+  &::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    content: '';
+    position: absolute;
+    background: linear-gradient(to top, color(main) 0%, color(alt) 100%);
+  }
+
+  @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    background-attachment: inherit;
+  }
+}
+
+/*
+-------------------------------------------------------
+2. Main Content
+-------------------------------------------------------
+*/
+
+.modal-content {
+  border-radius: 0.4rem;
+}
+
+.section {
+  padding-top: 3em;
+}
+
+.gallery-item {
+  width: calc(25% - 4px);
+}
+
+.footer {
+  font-size: 85%;
+}

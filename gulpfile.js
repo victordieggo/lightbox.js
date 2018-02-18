@@ -1,125 +1,210 @@
-/*jslint node: true */
+/*
+=======================================================
+GULPFILE
+=======================================================
+1. Require Plugins
+2. Set Assets Path
+3. Lint/Build CSS
+4. Lint/Build JS
+5. Compress Images
+6. Compress SVG files
+7. Watch/Build/Default
+=======================================================
+*/
+
 'use strict';
 
-//-------------------------------------------------------------------
-// SET VARIABLES
-//-------------------------------------------------------------------
+/*
+-------------------------------------------------------
+1. Require Plugins
+-------------------------------------------------------
+*/
 
-var gulp        = require('gulp'),
-    concat      = require('gulp-concat'),
-    cssmin      = require('gulp-cssmin'),
-    uglify      = require('gulp-uglify'),
-    combineMq   = require('gulp-combine-mq'),
-    browserSync = require('browser-sync').create(),
-    imagemin    = require('gulp-imagemin'),
-    mozjpeg     = require('imagemin-mozjpeg'),
-    pngquant    = require('imagemin-pngquant'),
-    path        = require('path'),
-    lightbox = {
-        root: 'lightbox/',
-        css:  'lightbox/lightbox.css',
-        js:   'lightbox/lightbox.js'
-    },
-    basePath = {
-        src:  'assets/src/',
-        dist: 'assets/dist/'
-    },
-    srcPath = {
-        css: basePath.src + 'css/*.css',
-        js:  basePath.src + 'js/*.js',
-        img: basePath.src + 'img/*.{png,gif,jpg}',
-        svg: basePath.src + 'svg/*.svg',
-    },
-    distPath = {
-        css: basePath.dist + 'css',
-        js:  basePath.dist + 'js',
-        img: basePath.dist + 'img',
-        svg: basePath.dist + 'svg',
-    },
-    bsReload = ['./**/*.{html,php}', srcPath.svg];
+const gulp = require('gulp');
+const autoprefixer = require('gulp-autoprefixer');
+const babel = require('gulp-babel');
+const concat = require('gulp-concat');
+const stylelint = require('gulp-stylelint');
+const combineMq = require('gulp-combine-mq');
+const csso = require('gulp-csso');
+const sass = require('gulp-sass');
+const eslint = require('gulp-eslint');
+const uglify = require('gulp-uglify');
+const imagemin = require('gulp-imagemin');
+const rename = require('gulp-rename');
+const mozjpeg = require('imagemin-mozjpeg');
+const pngquant = require('imagemin-pngquant');
+const browserSync = require('browser-sync').create();
+const path = require('path');
 
-//-------------------------------------------------------------------
-// BUILD CSS
-//-------------------------------------------------------------------
+/*
+-------------------------------------------------------
+2. Set Assets Path
+-------------------------------------------------------
+*/
 
-gulp.task('css', function () {
-    gulp.src(srcPath.css)
-        .pipe(concat('style.css'))
-        .pipe(combineMq())
-        .pipe(cssmin())
-        .pipe(gulp.dest(distPath.css))
-        .pipe(browserSync.stream());
+const basePath = {
+  dist: 'assets/dist/',
+  src: 'assets/src/'
+};
+
+const assets = {
+  css: {
+    dist: basePath.dist + 'css',
+    glob: basePath.src  + 'css/**/*.scss',
+    src:  basePath.src  + 'css/main.scss'
+  },
+  js: {
+    dist: basePath.dist + 'js',
+    glob: basePath.src  + 'js/**/*.js',
+    src:  basePath.src  + 'js/*.js',
+    vndr: basePath.src  + 'js/vendor/**/*.js'
+  },
+  img: {
+    dist: basePath.dist + 'img',
+    src:  basePath.src  + 'img/*.{png,gif,jpg}'
+  },
+  svg: {
+    dist: basePath.dist + 'svg',
+    src:  basePath.src  + 'svg/*.svg'
+  }
+};
+
+const lightbox = {
+  root: 'lightbox/',
+  css:  'lightbox/lightbox.scss',
+  js:   'lightbox/lightbox.js'
+};
+
+const bsReload = [
+  './**/*.{html,php}',
+  assets.svg.src
+];
+
+/*
+-------------------------------------------------------
+3. Lint/Build CSS
+-------------------------------------------------------
+*/
+
+gulp.task('css-lint', () => {
+  gulp.src([basePath.src + 'css/!(vendor)**/*.scss', lightbox.css])
+    .pipe(stylelint({
+      failAfterError: false,
+      reporters: [{
+        formatter: 'string',
+        console: true
+      }]
+    }))
 });
 
-gulp.task('cssLighbox', function () {
-    gulp.src(lightbox.css)
-        .pipe(concat('lightbox.min.css'))
-        .pipe(combineMq())
-        .pipe(cssmin())
-        .pipe(gulp.dest(lightbox.root))
-        .pipe(browserSync.stream());
+gulp.task('css-build', () => {
+  gulp.src(assets.css.src)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(combineMq())
+    .pipe(csso())
+    .pipe(gulp.dest(assets.css.dist))
+    .pipe(browserSync.stream());
 });
 
-//-------------------------------------------------------------------
-// BUILD JS
-//-------------------------------------------------------------------
-
-gulp.task('js', function () {
-    gulp.src(srcPath.js)
-        .pipe(concat('main.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(distPath.js))
-        .pipe(browserSync.stream());
+gulp.task('css-lightbox', () => {
+  gulp.src(lightbox.css)
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefixer())
+    .pipe(combineMq())
+    .pipe(csso())
+    .pipe(rename({
+      suffix: '.min'
+    }))
+    .pipe(gulp.dest(lightbox.root))
+    .pipe(browserSync.stream());
 });
 
-gulp.task('jsLighbox', function () {
-    gulp.src(lightbox.js)
-        .pipe(concat('lightbox.min.js'))
-        .pipe(uglify())
-        .pipe(gulp.dest(lightbox.root))
-        .pipe(browserSync.stream());
+gulp.task('css', ['css-lint', 'css-build', 'css-lightbox']);
+
+/*
+-------------------------------------------------------
+4. Lint/Build JS
+-------------------------------------------------------
+*/
+
+gulp.task('js-lint', () => {
+  gulp.src([assets.js.src, lightbox.js])
+    .pipe(eslint())
+    .pipe(eslint.format())
 });
 
-//-------------------------------------------------------------------
-// MINIFY IMAGES
-//-------------------------------------------------------------------
-
-gulp.task('img', function () {
-    gulp.src(srcPath.img)
-        .pipe(imagemin([
-            mozjpeg({quality: 89}),
-            pngquant({quality: 70})
-        ], {verbose: true}))
-        .pipe(gulp.dest(distPath.img))
-        .pipe(browserSync.stream());
+gulp.task('js-build', () => {
+  gulp.src([assets.js.vndr, assets.js.src])
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(assets.js.dist))
+    .pipe(browserSync.stream());
 });
 
-//-------------------------------------------------------------------
-// MINIFY SVG
-//-------------------------------------------------------------------
-
-gulp.task('svg', function () {
-    gulp.src(srcPath.svg)
-        .pipe(imagemin({verbose: true}))
-        .pipe(gulp.dest(distPath.svg));
+gulp.task('js-lightbox', () => {
+  gulp.src(lightbox.js)
+    .pipe(babel({
+      presets: ['env']
+    }))
+    .pipe(concat('lightbox.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(lightbox.root))
+    .pipe(browserSync.stream());
 });
 
-//-------------------------------------------------------------------
-// WATCH + DEFAULT
-//-------------------------------------------------------------------
+gulp.task('js', ['js-lint', 'js-build', 'js-lightbox']);
 
-gulp.task('watch', function () {
-    browserSync.init({
-        proxy: 'localhost/' + path.basename(__dirname),
-        open: false,
-    });
-    gulp.watch(srcPath.js, ['js']);
-    gulp.watch(lightbox.js, ['jsLighbox']);
-    gulp.watch(srcPath.css, ['css']);
-    gulp.watch(lightbox.css, ['cssLighbox']);
-    gulp.watch(srcPath.img, ['img']);
-    gulp.watch(srcPath.svg, ['svg']);
-    gulp.watch(bsReload, browserSync.reload);
+/*
+-------------------------------------------------------
+5. Compress Images
+-------------------------------------------------------
+*/
+
+gulp.task('img', () => {
+  gulp.src(assets.img.src)
+    .pipe(imagemin([
+      mozjpeg({quality: 89}),
+      pngquant({quality: 70})
+    ], {verbose: true}))
+    .pipe(gulp.dest(assets.img.dist))
+    .pipe(browserSync.stream());
 });
 
-gulp.task('default', ['js', 'jsLighbox', 'css', 'cssLighbox', 'img', 'svg', 'watch']);
+/*
+-------------------------------------------------------
+6. Compress SVG files
+-------------------------------------------------------
+*/
+
+gulp.task('svg', () => {
+  gulp.src(assets.svg.src)
+    .pipe(imagemin({verbose: true}))
+    .pipe(gulp.dest(assets.svg.dist));
+});
+
+/*
+-------------------------------------------------------
+7. Watch/Build/Default
+-------------------------------------------------------
+*/
+
+gulp.task('watch', () => {
+  browserSync.init({
+    proxy: 'localhost/' + path.basename(__dirname),
+    open: false,
+  });
+  gulp.watch([assets.js.glob, lightbox.js], ['js']);
+  gulp.watch([assets.css.glob, lightbox.css], ['css']);
+  gulp.watch(assets.img.src, ['img']);
+  gulp.watch(assets.svg.src, ['svg']);
+  gulp.watch(bsReload, browserSync.reload);
+});
+
+gulp.task('build', ['js', 'css', 'img', 'svg']);
+
+gulp.task('default', ['build', 'watch']);
