@@ -82,6 +82,7 @@
     element.classList.add('current-lightbox-item');
 
     btnClose = document.createElement('button');
+    btnClose.setAttribute('aria-label', 'Close');
     btnClose.className = 'lightbox-btn lightbox-btn-close';
 
     content = document.createElement('div');
@@ -91,8 +92,8 @@
     wrapper = content.cloneNode(false);
     wrapper.className = 'lightbox-wrapper';
     wrapper.style.animation = [animation.scaleIn, animation.fadeIn];
-    wrapper.appendChild(content);
     wrapper.appendChild(btnClose);
+    wrapper.appendChild(content);
 
     container = content.cloneNode(false);
     container.className = 'lightbox-container';
@@ -103,10 +104,11 @@
     if (element.getAttribute('data-lightbox') === 'gallery') {
       container.classList.add('lightbox-gallery');
       var key;
-      btnNav = {next: '', previous: ''};
+      btnNav = {previous: '', next: ''};
       for (key in btnNav) {
         if (btnNav.hasOwnProperty(key)) {
           btnNav[key] = btnClose.cloneNode(false);
+          btnNav[key].setAttribute('aria-label', key);
           btnNav[key].className = 'lightbox-btn lightbox-btn-' + key;
           btnNav[key].disabled = galleryItens(element)[key] === null ? true : false;
           wrapper.appendChild(btnNav[key]);
@@ -114,7 +116,9 @@
       }
     }
 
-    body.appendChild(container);
+    var currentParent = element.parentElement;
+    currentParent.insertBefore(container, currentParent.childNodes[0]);
+    btnClose.focus();
     toggleScroll();
   }
 
@@ -144,8 +148,7 @@
     wrapper.style.animation = [animation.scaleOut, animation.fadeOut];
     setTimeout(function () {
       if (body.contains(container)) {
-        body.removeChild(container);
-        currentTrigger.focus();
+        currentTrigger.parentElement.removeChild(container);
         currentItem.classList.remove('current-lightbox-item');
         toggleScroll();
       }
@@ -166,14 +169,18 @@
         var target = event.target;
         var key = event.keyCode;
         var type = event.type;
-        if ([container, btnClose].indexOf(target) !== -1 || key === 27) {
+        if ([container, btnClose].indexOf(target) !== -1 && type === 'click' || key === 27) {
+          currentTrigger.focus();
           closeLightbox();
         }
+        if (key === 9 && !container.contains(target)) {
+          btnClose.focus();
+        }
         if (container.classList.contains('lightbox-gallery')) {
-          if ((target === btnNav.next && type === 'click') || key === 39) {
+          if (target === btnNav.next && type === 'click' || key === 39) {
             galleryNavigation('next');
           }
-          if ((target === btnNav.previous && type === 'click') || key === 37) {
+          if (target === btnNav.previous && type === 'click' || key === 37) {
             galleryNavigation('previous');
           }
         }

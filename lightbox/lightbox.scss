@@ -25,6 +25,7 @@ License: MIT
     left: 0;
     right: 0;
     bottom: 0;
+    z-index: 1;
     padding: 2em;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -53,6 +54,7 @@ License: MIT
 */
 
 .lightbox-btn {
+  z-index: 2;
   width: 2.2em;
   height: 2.2em;
   position: absolute;
@@ -62,9 +64,14 @@ License: MIT
   background-position: center;
   background-repeat: no-repeat;
 
+  &:focus,
+  &:hover {
+    background-color: #333;
+  }
+
   &:disabled {
     cursor: initial;
-    background-color: #adadad;
+    background-color: #aaa;
   }
 
   &-close {
