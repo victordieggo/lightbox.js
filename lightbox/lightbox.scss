@@ -9,6 +9,7 @@ License: MIT
 2. Buttons
 3. Videos
 4. Animations
+5. Helpers
 =======================================================
 */
 
@@ -17,14 +18,6 @@ License: MIT
 1. Base Styles
 -------------------------------------------------------
 */
-
-[hidden] {
-  display: none
-}
-
-.remove-scroll {
-  overflow: hidden;
-}
 
 .lightbox {
   &-container {
@@ -165,4 +158,18 @@ License: MIT
   to {
     transform: scale(0);
   }
+}
+
+/*
+-------------------------------------------------------
+5. Helpers
+-------------------------------------------------------
+*/
+
+[hidden] {
+  display: none;
+}
+
+.remove-scroll {
+  overflow: hidden;
 }
