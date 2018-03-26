@@ -147,7 +147,7 @@ License: MIT
   }
 }
 
-@keyframes createBox {
+@keyframes scaleIn {
   from {
     transform: scale(0);
   }
@@ -157,7 +157,7 @@ License: MIT
   }
 }
 
-@keyframes deleteBox {
+@keyframes scaleOut {
   from {
     transform: scale(1);
   }
