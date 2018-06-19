@@ -27,14 +27,11 @@ License: MIT
     bottom: 0;
     z-index: 1;
     padding: 2em;
-    display: -webkit-flex;
-    display: -ms-flexbox;
     display: flex;
     position: fixed;
     align-items: center;
     justify-content: center;
-    background-color: rgb(29, 29, 29);
-    background-color: rgba(29, 29, 29, 0.8);
+    background-color: rgba(#000, 0.8);
   }
 
   &-wrapper {
