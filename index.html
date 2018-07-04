@@ -67,7 +67,7 @@
         <a class="btn" href="https://vimeo.com/83897470" data-lightbox>
           Vimeo
         </a>
-        <a class="btn" href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
+        <a class="btn" href="youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
           Youtube
         </a>
         <div id="modal" hidden>
@@ -92,7 +92,7 @@
 &lt;a href="https://vimeo.com/83897470" data-lightbox>
   Vimeo
 &lt;/a>
-&lt;a href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
+&lt;a href="youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
   Youtube
 &lt;/a>
 &lt;div id="modal" hidden>
@@ -106,6 +106,22 @@
     &lt;/form>
   &lt;/div>
 &lt;/div></code></pre>
+      <br/>
+      <p>If you prefer, you can also trigger the lightbox programmatically:</p>
+      <br/>
+      <pre><code class="language-javascript">// Trigger the lightbox once the page loads
+new lightbox('assets/dist/img/image-1.png');
+
+// Trigger the lightbox from any given element
+const btn = document.querySelector('.trigger-lightbox');
+btn.addEventListener('click', () => {
+  new lightbox('#modal');
+});
+</code></pre>
+      <br/>
+      <button class="btn trigger-lightbox">
+        Open Modal
+      </button>
     </section>
 
     <section id="gallery" class="section">

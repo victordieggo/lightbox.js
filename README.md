@@ -25,7 +25,7 @@ Add the `data-lightbox` attribute to an `<a>` tag and set its `href` to the cont
 <a href="https://vimeo.com/83897470" data-lightbox>
   Vimeo
 </a>
-<a href="https://www.youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
+<a href="youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
   Youtube
 </a>
 <div id="modal" class="lightbox-hide">
@@ -39,6 +39,19 @@ Add the `data-lightbox` attribute to an `<a>` tag and set its `href` to the cont
     </form>
   </div>
 </div>
+```
+
+If you prefer, you can also trigger the lightbox programmatically:
+
+```javascript
+// Trigger the lightbox once the page loads
+new lightbox('assets/dist/img/image-1.png');
+
+// Trigger the lightbox from any given element
+const btn = document.querySelector('.trigger-lightbox');
+btn.addEventListener('click', () => {
+  new lightbox('#modal');
+});
 ```
 
 ### Gallery ###

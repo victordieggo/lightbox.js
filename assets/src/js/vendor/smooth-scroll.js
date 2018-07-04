@@ -1,7 +1,6 @@
 /* =====================================================================
  * SMOOTHSCROLL
  * ===================================================================*/
-/*global window, document, clearInterval, setInterval*/
 
 (function () {
     'use strict';
