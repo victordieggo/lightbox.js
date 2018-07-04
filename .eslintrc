@@ -13,6 +13,7 @@
   },
   "globals": {
     "document",
-    "window"
+    "window",
+    "lightbox"
   }
 }
