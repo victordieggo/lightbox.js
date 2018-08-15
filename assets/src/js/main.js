@@ -10,10 +10,8 @@
   /* ---------------------------------------------------------------------
    * 1. Open modal
    * -------------------------------------------------------------------*/
-  
+
   const btn = document.querySelector('.trigger-lightbox');
-  btn.addEventListener('click', () => {
-    new lightbox('#modal');
-  });
+  btn.addEventListener('click', () => new lightbox('#modal'));
 
 }());
