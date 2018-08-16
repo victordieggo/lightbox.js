@@ -49,9 +49,7 @@ new lightbox('assets/dist/img/image-1.png');
 
 // Trigger the lightbox from any given element
 const btn = document.querySelector('.trigger-lightbox');
-btn.addEventListener('click', () => {
-  new lightbox('#modal');
-});
+btn.addEventListener('click', () => new lightbox('#modal'));
 ```
 
 ### Gallery ###
