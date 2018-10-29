@@ -37,7 +37,7 @@
     <a class="btn" href="https://github.com/victordieggo/lightbox.js/releases/latest" target="_blank">
       Download
     </a>
-    <a class="btn btn-outline" href="#get-started" data-scroll>
+    <a class="btn btn-outline smooth-scroll" href="#get-started" data-scroll>
       Get started
     </a>
   </header>
@@ -48,8 +48,7 @@
       <br/>
       <p class="text-block">Everything you'll need is located under the lightbox/ directory. Include the javascript and css files in your HTML document and you're all set up:</p>
       <br/>
-      <pre><code class="language-markup">&lt;link href="lightbox/lightbox.min.css" rel="stylesheet">
-&lt;script src="lightbox/lightbox.min.js">&lt;/script></code></pre>
+      <script src="https://gist.github.com/victordieggo/1f2226d8328f878586e366639d0e7fb9.js"></script>
     </section>
 
     <section id="usage" class="section">
@@ -83,39 +82,11 @@
         </div>
       </div>
       <br/>
-      <pre><code class="language-markup">&lt;a href="assets/dist/img/image-1.png" data-lightbox data-image-alt="Image 1">
-  Image
-&lt;/a>
-&lt;a href="#modal" data-lightbox>
-  Modal
-&lt;/a>
-&lt;a href="https://vimeo.com/83897470" data-lightbox>
-  Vimeo
-&lt;/a>
-&lt;a href="youtube.com/watch?v=Xyu_MdKBXic" data-lightbox>
-  Youtube
-&lt;/a>
-&lt;div id="modal" hidden>
-  &lt;div class="modal-content">
-    &lt;h3>Welcome!&lt;/h3>
-    &lt;p>Sign in to your account.&lt;/p>
-    &lt;form>
-      &lt;input type="email" name="email" placeholder="e-mail account">
-      &lt;input type="password" name="password" placeholder="password">
-      &lt;input class="btn" type="submit" name="submit" value="Sign In">
-    &lt;/form>
-  &lt;/div>
-&lt;/div></code></pre>
+      <script src="https://gist.github.com/victordieggo/a1dea4bf30ebfaf5ef6608e5333066a5.js"></script>
       <br/>
       <p>If you prefer, you can also trigger the lightbox programmatically:</p>
       <br/>
-      <pre><code class="language-javascript">// Trigger the lightbox once the page loads
-new lightbox('assets/dist/img/image-1.png');
-
-// Trigger the lightbox from any given element
-const btn = document.querySelector('.trigger-lightbox');
-btn.addEventListener('click', () => new lightbox('#modal'));
-</code></pre>
+      <script src="https://gist.github.com/victordieggo/4147d9040841b37efdb54c6b3ed869ed.js"></script>
       <br/>
       <button class="btn trigger-lightbox">
         Open Modal
@@ -151,18 +122,7 @@ btn.addEventListener('click', () => new lightbox('#modal'));
         </div>
       </div>
       <br/>
-      <pre><code class="language-markup">&lt;div class="gallery">
-  &lt;div class="gallery-item">
-    &lt;a href="assets/dist/img/image-1.png" data-lightbox="gallery" data-image-alt="Image 1">
-      &lt;img src="assets/dist/img/thumbnail-gallery.png" alt="Thumbnail 1">
-    &lt;/a>
-  &lt;/div>
-  &lt;div class="gallery-item">
-    &lt;a href="assets/dist/img/image-2.png" data-lightbox="gallery" data-image-alt="Image 2">
-      &lt;img src="assets/dist/img/thumbnail-gallery.png" alt="Thumbnail 2">
-    &lt;/a>
-  &lt;/div>
-&lt;/div></code></pre>
+      <script src="https://gist.github.com/victordieggo/b2fe992b7722e4d5b66aaa4106763935.js"></script>
     </section>
   </main>
 
