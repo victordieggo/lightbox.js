@@ -135,8 +135,7 @@ const lightbox = (element) => {
       element.classList.add(classes.firstTriggered);
     }
 
-    body.appendChild(container);
-    btnClose.focus();
+    element.parentNode.insertBefore(container, element.nextSibling);
     toggleScroll();
   };
 
@@ -166,7 +165,7 @@ const lightbox = (element) => {
     wrapper.style.animation = [animation.scaleOut, animation.fadeOut];
     setTimeout(() => {
       toggleScroll();
-      body.removeChild(container);
+      element.parentNode.removeChild(container);
       if (element.tagName === 'A') {
         currentItem.classList.remove(classes.currentElement);
         const trigger = doc.querySelector('.' + classes.firstTriggered);
@@ -184,7 +183,7 @@ const lightbox = (element) => {
     const clickClose = type == 'click' && [container, btnClose].indexOf(target) !== -1;
     const keyupClose = type == 'keyup' && key == 27;
     if (clickClose || keyupClose) {
-      if (container.parentElement === body) {
+      if (container.parentElement === element.parentElement) {
         close();
       }
     }
@@ -233,10 +232,10 @@ const lightbox = (element) => {
   const toggleEvents = (option) => {
     ['click', 'keyup', 'keydown'].forEach((eventType) => {
       if (option === 'remove') {
-        body.removeEventListener(eventType, event => controls(event));
-      } else {
-        body.addEventListener(eventType, event => controls(event));
+        doc.removeEventListener(eventType, event => controls(event));
+        return;
       }
+      doc.addEventListener(eventType, event => controls(event));
     });
   };
 
