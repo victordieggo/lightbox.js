@@ -19,6 +19,10 @@ Demo Layout
   background-attachment: fixed;
   background-image: url('../../dist/svg/bg-header.svg');
 
+  .text-block {
+    padding: 0 1.5em;
+  }
+
   &::before {
     top: 0;
     left: 0;
@@ -61,5 +65,5 @@ Demo Layout
 
 .footer {
   font-size: 85%;
-  background: linear-gradient(to left, color(main) 0%, color(alt) 100%);
+  background: linear-gradient(to top, color(main) 0%, darken(color(main), 7%) 100%);
 }
